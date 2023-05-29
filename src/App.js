@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Navbar from './Pages/Navbar/Navbar';
 import Main from './Pages/Main/Main';
 import Fixtures from './Pages/Fixtures/Fixtures';
@@ -6,22 +6,9 @@ import Results from './Pages/Results/Results';
 import Table from './Pages/Table/Table';
 import Footer from './Pages/Footer/Footer';
 
-function App() {
+function App({ leagueNews, leagueFixtures, leagueStandings }) {
 	// screen to display
 	const [currentDisplay, setCurrentDisplay] = useState('Main');
-
-	// information fetched from API
-	const [leagueStandings, setLeagueStandings] = useState();
-	const [leagueMatches, setLeagueMatches] = useState();
-	const [leagueNews, setLeagueNews] = useState();
-
-	function fetchData() {
-		// fetch and set data for all useState variables
-	}
-
-	useEffect(() => {
-		// call fetchData every X seconds
-	});
 
 	return (
 		<div className="App">
