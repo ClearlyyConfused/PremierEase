@@ -25,7 +25,7 @@ function App({ leagueNews, leagueFixtures, leagueStandings }) {
 			) : currentDisplay === 'Results' ? (
 				<Results />
 			) : currentDisplay === 'Table' ? (
-				<Table />
+				<Table leagueStandings={leagueStandings} />
 			) : (
 				''
 			)}
