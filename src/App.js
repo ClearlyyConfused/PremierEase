@@ -23,7 +23,7 @@ function App({ leagueNews, leagueFixtures, leagueStandings }) {
 			) : currentDisplay === 'Fixtures' ? (
 				<Fixtures />
 			) : currentDisplay === 'Results' ? (
-				<Results />
+				<Results leagueFixtures={leagueFixtures} />
 			) : currentDisplay === 'Table' ? (
 				<Table leagueStandings={leagueStandings} />
 			) : (
