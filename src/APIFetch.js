@@ -3,30 +3,30 @@ import App from './App';
 
 function APIFetch() {
 	// information fetched from API
-	const [leagueStandings, setLeagueStandings] = useState();
-	const [leagueFixtures, setLeagueFixtures] = useState();
-	const [leagueNews, setLeagueNews] = useState([]);
+	const [apiData, setApiData] = useState({
+		standings: undefined,
+		fixtures: undefined,
+		news: undefined,
+	});
 
-	// fetches all required data
-	function fetchData() {
-		console.log('fetching data');
-
-		// standings
-		fetch('https://matchday-madness-backend.vercel.app/LeagueStandings')
+	async function fetchStandings() {
+		return fetch('https://matchday-madness-backend.vercel.app/LeagueStandings')
 			.then((response) => response.json())
 			.then((data) => {
-				setLeagueStandings(data.standings);
+				return data.standings;
 			});
+	}
 
-		// fixtures
-		fetch('https://matchday-madness-backend.vercel.app/LeagueMatches')
+	async function fetchFixtures() {
+		return fetch('https://matchday-madness-backend.vercel.app/LeagueMatches')
 			.then((response) => response.json())
 			.then((data) => {
-				setLeagueFixtures(data.matches);
+				return data.matches;
 			});
+	}
 
-		// news
-		fetch('https://matchday-madness-backend.vercel.app/LeagueNews')
+	async function fetchNews() {
+		return fetch('https://matchday-madness-backend.vercel.app/LeagueNews')
 			.then((response) => response.json())
 			.then((data) => {
 				let news = [];
@@ -56,8 +56,17 @@ function APIFetch() {
 						},
 					];
 				}
-				setLeagueNews(news);
+
+				return news;
 			});
+	}
+
+	// fetches all required data
+	async function fetchData() {
+		const standings = await fetchStandings();
+		const fixtures = await fetchFixtures();
+		const news = await fetchNews();
+		setApiData({ standings: standings, fixtures: fixtures, news: news });
 	}
 
 	// fetches every 10 seconds
@@ -75,9 +84,9 @@ function APIFetch() {
 	// gives information to main App
 	return (
 		<App
-			leagueNews={leagueNews}
-			leagueFixtures={leagueFixtures}
-			leagueStandings={leagueStandings}
+			leagueNews={apiData.news}
+			leagueFixtures={apiData.fixtures}
+			leagueStandings={apiData.standings}
 		/>
 	);
 }

@@ -2,10 +2,12 @@ import './Table.css';
 import TableRow from './TableRow';
 
 function Table({ leagueStandings }) {
-	console.log(leagueStandings);
-	return (
-		<main className="league-table">
-			<table>
+	if (leagueStandings === undefined) {
+		return <div>Loading...</div>;
+	} else {
+		return (
+			<table className="league-table">
+				{/* table header */}
 				<tr>
 					<th>Pos</th>
 					<th>Club</th>
@@ -16,12 +18,13 @@ function Table({ leagueStandings }) {
 					<th>GD</th>
 					<th>Pts</th>
 				</tr>
+				{/* creates row displaying each team's info */}
 				{leagueStandings.map((team) => {
 					return <TableRow team={team} />;
 				})}
 			</table>
-		</main>
-	);
+		);
+	}
 }
 
 export default Table;

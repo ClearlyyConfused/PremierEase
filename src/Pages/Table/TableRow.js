@@ -3,6 +3,7 @@ import { useState } from 'react';
 function TableRow({ team }) {
 	const [formDisplay, setFormDisplay] = useState('0px');
 
+	// determines height of team form to display/hide when clicked
 	function handleClick() {
 		if (formDisplay === '0px') {
 			setFormDisplay('fit-content');
@@ -24,7 +25,9 @@ function TableRow({ team }) {
 			<td>{team.lost}</td>
 			<td>{team.goalDifference}</td>
 			<td>{team.points}</td>
-			<div style={{ height: formDisplay }}>Form: {team.form}</div>
+			<div className="form-display" style={{ height: formDisplay }}>
+				Form: {team.form}
+			</div>
 		</tr>
 	);
 }

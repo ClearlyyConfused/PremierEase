@@ -1,17 +1,29 @@
 .league-table {
-	table {
-		display: flex;
-		flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
+	// table header
+	tr:first-of-type {
+		position: sticky;
+		top: 0px;
+		background-color: white;
+		:hover {
+			cursor: default;
+		}
+	}
+
+	tr {
 		td {
 			img {
 				width: 35px;
 				height: 35px;
 			}
 		}
-
-		div {
+		.form-display {
 			overflow: hidden;
 		}
+	}
+	tr:hover {
+		cursor: pointer;
 	}
 }

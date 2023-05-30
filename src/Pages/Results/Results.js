@@ -1,12 +1,15 @@
 import './Results.css';
 
 function Results({ leagueFixtures }) {
-	return (
-		<main className="league-results">
-			<table className="league-results-table">
-				{leagueFixtures.map((fixture) => {
+	if (leagueFixtures === undefined) {
+		return <div>Loading...</div>;
+	} else {
+		return (
+			<table className="league-results">
+				{/* reversed to display latest matches first */}
+				{[...leagueFixtures].reverse().map((fixture) => {
+					// only returns finished matches
 					if (fixture.status === 'FINISHED') {
-						console.log(fixture);
 						return (
 							<tr>
 								<td>{fixture.awayTeam.shortName}</td>
@@ -24,8 +27,8 @@ function Results({ leagueFixtures }) {
 					}
 				})}
 			</table>
-		</main>
-	);
+		);
+	}
 }
 
 export default Results;

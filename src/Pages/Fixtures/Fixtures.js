@@ -1,10 +1,13 @@
 import './Fixtures.css';
 
 function Fixtures({ leagueFixtures }) {
-	return (
-		<main className="league-fixtures">
-			<table className="league-fixtures-table">
+	if (leagueFixtures === undefined) {
+		return <div>Loading...</div>;
+	} else {
+		return (
+			<table className="league-fixtures">
 				{leagueFixtures.map((fixture) => {
+					// only returns upcoming matches
 					if (fixture.status === 'SCHEDULED' || fixture.status === 'TIMED') {
 						console.log(fixture);
 						return (
@@ -31,8 +34,8 @@ function Fixtures({ leagueFixtures }) {
 					}
 				})}
 			</table>
-		</main>
-	);
+		);
+	}
 }
 
 export default Fixtures;
