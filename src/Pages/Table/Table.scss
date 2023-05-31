@@ -1,11 +1,14 @@
 .league-table {
 	display: flex;
 	flex-direction: column;
+	overflow-y: scroll;
+	flex: 1;
 
 	// table header
 	tr:first-of-type {
+		z-index: 1; // in front of table rows
 		position: sticky;
-		top: 60px; // accounts for navbar
+		top: 0px; // accounts for navbar
 		background-color: white;
 
 		:hover {
@@ -14,6 +17,7 @@
 	}
 
 	tr {
+		z-index: 0; // behind table header
 		td {
 			img {
 				width: 35px;

@@ -29,9 +29,6 @@ function App({ leagueNews, leagueFixtures, leagueStandings }) {
 			) : (
 				''
 			)}
-
-			{/* footer */}
-			<Footer />
 		</div>
 	);
 }

@@ -1,7 +1,7 @@
 .league-results {
 	display: flex;
 	flex-direction: column;
-	height: 500px;
+	flex: 1;
 	overflow-y: scroll;
 
 	tr {
