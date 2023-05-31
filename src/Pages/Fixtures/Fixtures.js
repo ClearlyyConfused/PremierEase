@@ -26,9 +26,6 @@ function Fixtures({ leagueFixtures }) {
 										</td>
 										<td>
 											{new Date(fixture.utcDate).toLocaleString('en-US', {
-												year: 'numeric',
-												month: 'numeric',
-												day: 'numeric',
 												hour: 'numeric',
 												minute: 'numeric',
 											})}

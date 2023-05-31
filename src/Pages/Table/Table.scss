@@ -5,8 +5,9 @@
 	// table header
 	tr:first-of-type {
 		position: sticky;
-		top: 0px;
+		top: 60px; // accounts for navbar
 		background-color: white;
+
 		:hover {
 			cursor: default;
 		}

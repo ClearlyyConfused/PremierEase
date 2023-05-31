@@ -1,0 +1,45 @@
+.navbar {
+	background-color: rgb(55, 0, 60);
+	display: flex;
+	position: sticky;
+	top: 0;
+	box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.4);
+
+	.logo {
+		display: flex;
+		width: 120px; // same as buttons
+		margin-right: 10px;
+
+		.lion-logo {
+			height: 40px;
+			padding: 10px;
+			padding-right: 0px;
+			width: auto;
+			filter: brightness(0) invert(1);
+		}
+		.text-logo {
+			height: 33px;
+			width: auto;
+			margin-top: auto;
+			margin-bottom: 1px;
+			padding: 10px;
+			filter: brightness(0) invert(1);
+		}
+	}
+
+	button {
+		width: 120px;
+		background-color: transparent;
+		border: none;
+		color: white;
+		font-family: inherit;
+		font-weight: bold;
+		font-size: 15px;
+	}
+
+	button:hover {
+		transition: all 0.5s;
+		color: black;
+		background-color: white;
+	}
+}
