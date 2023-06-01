@@ -1,7 +1,9 @@
 import './Results.css';
 import SortResults from './SortResults';
+import ScreenWidth from '../../Helper/ScreenWidth';
 
 function Results({ leagueFixtures }) {
+	const { screenWidth } = ScreenWidth();
 	let matches = leagueFixtures !== undefined ? SortResults(leagueFixtures) : [];
 
 	if (leagueFixtures === undefined) {
@@ -12,12 +14,16 @@ function Results({ leagueFixtures }) {
 				{matches.map((dateMatchesPair) => {
 					// only returns finished matches
 					return (
-						<tr>
+						<tr className="matches-on-date">
 							<h2>{dateMatchesPair[0]}</h2>
 							{dateMatchesPair[1].reverse().map((fixture) => {
 								return (
-									<tr>
-										<td>{fixture.awayTeam.shortName}</td>
+									<tr className="match">
+										<td>
+											{screenWidth >= 550
+												? fixture.awayTeam.shortName
+												: fixture.awayTeam.tla}
+										</td>
 										<td>
 											<img
 												src={fixture.awayTeam.crest}
@@ -32,7 +38,11 @@ function Results({ leagueFixtures }) {
 												alt={fixture.homeTeam.shortName}
 											/>
 										</td>
-										<td>{fixture.homeTeam.shortName}</td>
+										<td>
+											{screenWidth >= 550
+												? fixture.homeTeam.shortName
+												: fixture.homeTeam.tla}
+										</td>
 									</tr>
 								);
 							})}

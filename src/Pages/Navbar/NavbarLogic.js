@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import hamburgerIcon from '../../images/Hamburger_icon.svg.png';
 import closeIcon from '../../images/close_icon.png';
 
@@ -7,12 +7,12 @@ function NavbarLogic() {
 	const [buttonsHeight, setButtonsHeight] = useState('0px');
 	const [dropdownIcon, setDropdownIcon] = useState(hamburgerIcon);
 	function dropDown() {
-		if (buttonsHeight === 'fit-content') {
+		if (buttonsHeight === '250px') {
 			setButtonsHeight('0px');
 			setDropdownIcon(hamburgerIcon);
 		}
 		if (buttonsHeight === '0px') {
-			setButtonsHeight('fit-content');
+			setButtonsHeight('250px');
 			setDropdownIcon(closeIcon);
 		}
 	}

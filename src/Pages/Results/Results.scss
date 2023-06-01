@@ -3,12 +3,65 @@
 	flex-direction: column;
 	flex: 1;
 	overflow-y: scroll;
+	border-spacing: 0px;
 
-	tr {
-		td {
-			img {
-				width: 35px;
-				height: 35px;
+	.matches-on-date {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		// date
+		h2 {
+			align-self: flex-start;
+			font-size: 24px;
+			font-weight: bold;
+			margin: 0;
+			padding: 20px;
+		}
+
+		.match:first-of-type {
+			border-top: 1px solid rgba(128, 128, 128, 0.2);
+		}
+		.match {
+			box-sizing: border-box;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+			width: 100%;
+			padding: 10px;
+
+			td {
+				font-weight: bold;
+				img {
+					width: 30px;
+					height: 30px;
+					padding: 0px 10px;
+				}
+			}
+
+			// first team name
+			td:nth-child(1) {
+				text-align: right;
+			}
+
+			// score
+			td:nth-child(3),
+			td:nth-child(4) {
+				min-width: 35px;
+				min-height: 35px;
+				padding: 0;
+				text-align: center;
+				background-color: #37003c;
+				color: white;
+				line-height: 35px;
+			}
+
+			// both team names
+			td:nth-child(1),
+			td:nth-child(6) {
+				width: 150px;
 			}
 		}
 	}

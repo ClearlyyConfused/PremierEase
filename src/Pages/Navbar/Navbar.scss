@@ -53,13 +53,14 @@ $mobile-size: 620px; // size in which layout changes to mobile, same in Navbar.j
 	.buttons {
 		display: flex;
 		overflow: hidden;
+		transition: height 0.5s;
 
 		@media (max-width: $mobile-size) {
 			flex-direction: column;
 			align-items: center;
 
 			button {
-				height: 60px; // same size as logo
+				min-height: 60px; // same size as logo
 				width: 100% !important;
 			}
 		}
