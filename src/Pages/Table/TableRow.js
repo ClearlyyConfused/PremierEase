@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import ScreenWidth from '../../Helper/ScreenWidth';
+import TeamForm from './TeamForm';
 
 function TableRow({ team }) {
+	const { screenWidth } = ScreenWidth();
 	const mobileWidth = 750; // width at which form becomes a dropdown, same as in Table.scss
 
-	const { screenWidth } = ScreenWidth();
+	// determines height of team's form to display/hide when clicked
 	const [formDisplay, setFormDisplay] = useState('0px');
-
-	// determines height of team form to display/hide when clicked
 	function handleClick() {
 		if (formDisplay === '0px') {
-			setFormDisplay('fit-content');
+			setFormDisplay('100px');
 		}
-		if (formDisplay === 'fit-content') {
+		if (formDisplay === '100px') {
 			setFormDisplay('0px');
 		}
 	}
@@ -40,7 +40,7 @@ function TableRow({ team }) {
 
 			{/* display either form or button to display form */}
 			{screenWidth > mobileWidth ? (
-				<td>{team.form}</td>
+				<TeamForm form={team.form} />
 			) : (
 				<td onClick={handleClick}>V</td>
 			)}
@@ -48,8 +48,10 @@ function TableRow({ team }) {
 			{screenWidth > mobileWidth ? (
 				''
 			) : (
-				<div className="form-display" style={{ height: formDisplay }}>
-					Form: {team.form}
+				<div className="form-dropdown" style={{ height: formDisplay }}>
+					<div className="form-dropdown-container">
+						Form: <TeamForm form={team.form} />
+					</div>
 				</div>
 			)}
 		</tr>

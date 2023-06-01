@@ -128,9 +128,48 @@ $mobile-width: 750px; // width at which form becomes a dropdown, same as in Tabl
 				cursor: pointer;
 			}
 		}
+	}
 
-		.form-display {
-			overflow: hidden;
+	// container for form when in default layout
+	.form-container {
+		display: flex;
+		justify-content: center;
+		gap: 15px;
+		p {
+			margin: 0;
+			width: 35px;
+			height: 35px;
+			line-height: 35px;
+			border-radius: 35px;
+			color: white;
+			font-weight: bold;
+		}
+		.win {
+			background-color: green;
+		}
+		.draw {
+			background-color: gray;
+		}
+		.lost {
+			background-color: red;
+		}
+	}
+
+	// form dropdown when in mobile layout
+	.form-dropdown {
+		overflow: hidden;
+		transition: height 0.5s;
+		.form-dropdown-container {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			padding: 10px;
+			padding-bottom: 15px;
+			margin-bottom: 15px;
+			align-items: center;
+			justify-content: center;
+			font-weight: bold;
+			border-bottom: 1px solid black;
 		}
 	}
 }
