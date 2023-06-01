@@ -2,9 +2,11 @@ import './Navbar.css';
 import pl_lion from '../../images/Premier_League_Lion_Crown.png';
 import pl_logo from '../../images/Premier_league_text_logo.png';
 import NavbarLogic from './NavbarLogic';
+import ScreenWidth from '../../Helper/ScreenWidth';
 
 function Navbar({ setCurrentDisplay }) {
-	const { screenWidth, dropDown, buttonsHeight, dropdownIcon } = NavbarLogic();
+	const { dropDown, buttonsHeight, dropdownIcon } = NavbarLogic();
+	const { screenWidth } = ScreenWidth();
 	const mobileSize = 620; // size in which layout changes to mobile, same in Navbar.scss
 
 	return (

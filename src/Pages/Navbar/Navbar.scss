@@ -75,7 +75,7 @@ $mobile-size: 620px; // size in which layout changes to mobile, same in Navbar.j
 		}
 
 		button:hover {
-			transition: all 0.5s;
+			transition: background-color 0.5s, color 0.5s;
 			color: black;
 			background-color: white;
 		}

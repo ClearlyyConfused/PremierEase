@@ -1,34 +1,136 @@
+$gap-between-columns: 3px;
+
+$position-column-width: 20px;
+
+$club-logo-column-width: 50px;
+$mobile-club-logo-column-width: 30px;
+
+$right-columns-width: 28px;
+
+$form-column-width: 300px;
+$mobile-form-column-width: 40px;
+
+$mobile-width: 750px; // width at which form becomes a dropdown, same as in TableRow.js
+
 .league-table {
 	display: flex;
 	flex-direction: column;
 	overflow-y: scroll;
 	flex: 1;
+	border-spacing: 0px;
 
 	// table header
+	tr:first-of-type :hover {
+		cursor: default;
+	}
 	tr:first-of-type {
 		z-index: 1; // in front of table rows
 		position: sticky;
-		top: 0px; // accounts for navbar
+		top: 0px;
 		background-color: white;
+		display: flex;
+		padding: 5px 0px;
 
-		:hover {
-			cursor: default;
+		th {
+			padding: 0px $gap-between-columns;
+			color: #6c6c6c;
+			font-weight: bold;
+		}
+		// position column
+		th:nth-child(1) {
+			min-width: $position-column-width;
+		}
+		// club logo column
+		th:nth-child(2) {
+			min-width: $club-logo-column-width;
+			text-align: center;
+			@media (max-width: 350px) {
+				min-width: $mobile-club-logo-column-width;
+			}
+		}
+		// club column
+		th:nth-child(3) {
+			width: 100%;
+		}
+		// right side columns {
+		th:nth-child(4),
+		th:nth-child(5),
+		th:nth-child(6),
+		th:nth-child(7),
+		th:nth-child(8),
+		th:nth-child(9) {
+			min-width: $right-columns-width;
+		}
+		// forms column
+		th:nth-child(10) {
+			min-width: $form-column-width;
+			@media (max-width: $mobile-width) {
+				min-width: $mobile-form-column-width;
+			}
 		}
 	}
 
+	// table rows
 	tr {
 		z-index: 0; // behind table header
+
 		td {
+			padding: 0px $gap-between-columns;
+
 			img {
-				width: 35px;
-				height: 35px;
+				width: $club-logo-column-width;
+				height: $club-logo-column-width;
+				@media (max-width: 350px) {
+					width: $mobile-club-logo-column-width;
+					height: $mobile-club-logo-column-width;
+				}
 			}
 		}
+
+		// position column
+		td:nth-child(1) {
+			text-align: center;
+			min-width: $position-column-width;
+		}
+		// club column
+		td:nth-child(3) {
+			width: 100%;
+			text-align: left;
+			@media (max-width: 375px) {
+				padding: 0;
+				font-size: 0px;
+			}
+		}
+		// right side columns {
+		td:nth-child(4),
+		td:nth-child(5),
+		td:nth-child(6),
+		td:nth-child(7),
+		td:nth-child(8),
+		td:nth-child(9) {
+			min-width: $right-columns-width;
+			text-align: center;
+		}
+		// points column
+		td:nth-child(9) {
+			font-weight: bold;
+		}
+		// form column
+		td:nth-child(10) {
+			text-align: center;
+			min-width: $form-column-width;
+			@media (max-width: $mobile-width) {
+				min-width: $mobile-form-column-width;
+			}
+		}
+		@media (max-width: $mobile-width) {
+			td:nth-child(10):hover {
+				cursor: pointer;
+			}
+		}
+
 		.form-display {
 			overflow: hidden;
 		}
-	}
-	tr:hover {
-		cursor: pointer;
 	}
 }
