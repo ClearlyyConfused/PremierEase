@@ -39,7 +39,7 @@ function APIFetch() {
 							snippet: article.snippet,
 							source: article.source,
 							thumbnail: article.thumbnail,
-							title: article.thumbnail,
+							title: article.title,
 						},
 					];
 				}
@@ -52,7 +52,7 @@ function APIFetch() {
 							snippet: article.news_results[0].snippet,
 							source: article.news_results[0].source,
 							thumbnail: article.news_results[0].thumbnail,
-							title: article.news_results[0].thumbnail,
+							title: article.news_results[0].title,
 						},
 					];
 				}

@@ -4,7 +4,6 @@ import Main from './Pages/Main/Main';
 import Fixtures from './Pages/Fixtures/Fixtures';
 import Results from './Pages/Results/Results';
 import Table from './Pages/Table/Table';
-import Footer from './Pages/Footer/Footer';
 
 function App({ leagueNews, leagueFixtures, leagueStandings }) {
 	// screen to display
@@ -19,7 +18,11 @@ function App({ leagueNews, leagueFixtures, leagueStandings }) {
 			{/* If currentDisplay = Standings -> Standings display that has in-depth standings information */}
 			{/* If currentDisplay = Matches -> League Matches display that has in-depth matches information information */}
 			{currentDisplay === 'Main' ? (
-				<Main />
+				<Main
+					leagueNews={leagueNews}
+					leagueFixtures={leagueFixtures}
+					leagueStandings={leagueStandings}
+				/>
 			) : currentDisplay === 'Fixtures' ? (
 				<Fixtures leagueFixtures={leagueFixtures} />
 			) : currentDisplay === 'Results' ? (
