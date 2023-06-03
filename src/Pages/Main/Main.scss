@@ -5,15 +5,22 @@
 	height: 100%;
 	overflow-y: scroll;
 
-	@media (max-width: 768px) {
+	// vertical mobile layout
+	@media (max-width: 850px) {
 		flex-wrap: wrap;
+		.standings {
+			min-width: 0px;
+		}
 	}
 
+	// container for standings table and matches table
 	.standings-matches {
 		width: 100%;
+		min-width: 50vw;
 		height: fit-content;
 	}
 
+	// matches table
 	.current-matchday-matches {
 		box-sizing: border-box;
 		background-color: white;
@@ -34,67 +41,68 @@
 			gap: 20px;
 
 			.matches-date-pair {
+				// date
 				h2 {
 					font-size: 14px;
 					text-align: center;
 				}
 
+				// matches on a certain date
 				.matches {
 					display: flex;
 					flex-direction: column;
 					gap: 10px;
 
-					.score,
-					.date {
+					// matches row
+					tr {
 						display: flex;
 						justify-content: center;
 						align-items: center;
-						box-sizing: border-box;
-						width: 80px;
-						height: 30px;
-						text-align: center;
-					}
+						gap: 5px;
+						img {
+							width: 30px;
+							height: 30px;
+						}
 
-					.score {
-						td {
+						// first team name
+						td:nth-child(1) {
+							text-align: right;
+						}
+
+						.score,
+						.time {
+							display: flex;
+							justify-content: center;
+							align-items: center;
 							box-sizing: border-box;
-							background-color: #37003c;
-							padding: 0;
-							min-width: 30px;
-							color: white;
-							font-weight: bold;
-							line-height: 30px;
-							text-align: center !important;
+							width: 80px;
+							height: 30px;
+							text-align: center;
+						}
+
+						.score {
+							td {
+								box-sizing: border-box;
+								background-color: #37003c;
+								padding: 0;
+								min-width: 30px;
+								color: white;
+								font-weight: bold;
+								line-height: 30px;
+								text-align: center !important;
+							}
+						}
+						.time {
+							border: 1px solid rgba(128, 128, 128, 0.2);
+							color: #2f2f2f !important;
 						}
 					}
-					.date {
-						border: 1px solid rgba(128, 128, 128, 0.2);
-						color: #2f2f2f !important;
-					}
-				}
-			}
-
-			tr {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				gap: 5px;
-
-				td {
-					img {
-						width: 30px;
-						height: 30px;
-					}
-				}
-
-				// first team name
-				td:nth-child(1) {
-					text-align: right;
 				}
 			}
 		}
 	}
 
+	// standings table
 	.standings {
 		box-sizing: border-box;
 		background-color: white;
@@ -113,6 +121,7 @@
 		.standings-table {
 			border-spacing: 0px 5px;
 
+			// table header
 			tr:first-of-type {
 				th {
 					padding-bottom: 10px;
@@ -124,6 +133,7 @@
 				}
 			}
 
+			// table rows
 			tr {
 				td {
 					img {
