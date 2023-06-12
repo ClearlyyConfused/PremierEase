@@ -2,6 +2,7 @@ import './Table.css';
 import TableRow from './TableRow';
 
 function Table({ leagueStandings }) {
+	console.log(leagueStandings)
 	if (leagueStandings === undefined) {
 		return <div>Loading...</div>;
 	} else {
