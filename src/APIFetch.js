@@ -83,11 +83,7 @@ function APIFetch() {
 
 	// gives information to main App
 	return (
-		<App
-			leagueNews={apiData.news}
-			leagueFixtures={apiData.fixtures}
-			leagueStandings={apiData.standings}
-		/>
+		<App leagueNews={apiData.news} leagueFixtures={apiData.fixtures} leagueStandings={apiData.standings} />
 	);
 }
 

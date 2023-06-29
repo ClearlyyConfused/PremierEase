@@ -3,7 +3,7 @@ function SortFixtures(leagueFixtures) {
 
 	for (const fixture of leagueFixtures) {
 		// skips finished matches
-		if (fixture.status !== 'FINISHED') {
+		if (fixture.status === 'FINISHED') {
 			continue;
 		}
 

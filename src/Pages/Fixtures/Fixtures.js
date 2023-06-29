@@ -19,16 +19,9 @@ function Fixtures({ leagueFixtures }) {
 							{dateMatchesPair[1].reverse().map((fixture) => {
 								return (
 									<tr className="match">
+										<td>{screenWidth >= 550 ? fixture.awayTeam.shortName : fixture.awayTeam.tla}</td>
 										<td>
-											{screenWidth >= 550
-												? fixture.awayTeam.shortName
-												: fixture.awayTeam.tla}
-										</td>
-										<td>
-											<img
-												src={fixture.awayTeam.crest}
-												alt={fixture.awayTeam.shortName}
-											/>
+											<img src={fixture.awayTeam.crest} alt={fixture.awayTeam.shortName} />
 										</td>
 										<td>
 											{new Date(fixture.utcDate).toLocaleString('en-US', {
@@ -37,16 +30,9 @@ function Fixtures({ leagueFixtures }) {
 											})}
 										</td>
 										<td>
-											<img
-												src={fixture.homeTeam.crest}
-												alt={fixture.homeTeam.shortName}
-											/>
+											<img src={fixture.homeTeam.crest} alt={fixture.homeTeam.shortName} />
 										</td>
-										<td>
-											{screenWidth >= 550
-												? fixture.homeTeam.shortName
-												: fixture.homeTeam.tla}
-										</td>
+										<td>{screenWidth >= 550 ? fixture.homeTeam.shortName : fixture.homeTeam.tla}</td>
 									</tr>
 								);
 							})}
