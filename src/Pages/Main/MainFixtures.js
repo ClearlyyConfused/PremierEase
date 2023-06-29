@@ -1,8 +1,7 @@
 import SortFixtures from '../Fixtures/SortFixtures';
 
 function MainFixtures({ leagueFixtures }) {
-	const currentMatchday =
-		leagueFixtures !== undefined ? leagueFixtures[0].season.currentMatchday : 0;
+	const currentMatchday = leagueFixtures !== undefined ? leagueFixtures[0].season.currentMatchday : 0;
 	let matchDatePair = leagueFixtures !== undefined ? SortFixtures(leagueFixtures) : [];
 
 	if (matchDatePair === undefined) {
@@ -30,16 +29,15 @@ function MainFixtures({ leagueFixtures }) {
 													) : match.status === 'SCHEDULED' ? (
 														// hides live message if game is not live
 														<td className="match-scheduled">SCH</td>
+													) : match.status === 'TIMED' ? (
+														<td className="match-scheduled">SCH</td>
 													) : (
 														<td className="match-finished">FIN</td>
 													)}
 
 													<td>{match.homeTeam.tla}</td>
 													<td>
-														<img
-															src={match.homeTeam.crest}
-															alt={match.homeTeam.shortName}
-														/>
+														<img src={match.homeTeam.crest} alt={match.homeTeam.shortName} />
 													</td>
 
 													{/* if match isn't live or finished, display date of match */}
@@ -59,10 +57,7 @@ function MainFixtures({ leagueFixtures }) {
 													)}
 
 													<td>
-														<img
-															src={match.awayTeam.crest}
-															alt={match.awayTeam.shortName}
-														/>
+														<img src={match.awayTeam.crest} alt={match.awayTeam.shortName} />
 													</td>
 													<td>{match.awayTeam.tla}</td>
 												</tr>
