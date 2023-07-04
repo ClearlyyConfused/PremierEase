@@ -3,6 +3,7 @@ import pl_lion from '../../images/Premier_League_Lion_Crown.png';
 import pl_logo from '../../images/Premier_league_text_logo.png';
 import NavbarLogic from './NavbarLogic';
 import ScreenWidth from '../../Helper/ScreenWidth';
+import { Link } from 'react-router-dom';
 
 function Navbar({ setCurrentDisplay }) {
 	const { dropDown, buttonsHeight, dropdownIcon } = NavbarLogic();
@@ -17,12 +18,7 @@ function Navbar({ setCurrentDisplay }) {
 
 				{/* hamburger/cancel icon when in mobile layout */}
 				{screenWidth <= mobileSize ? (
-					<img
-						className="hamburger-icon"
-						src={dropdownIcon}
-						alt="Hamburger Toggle"
-						onClick={dropDown}
-					/>
+					<img className="hamburger-icon" src={dropdownIcon} alt="Hamburger Toggle" onClick={dropDown} />
 				) : (
 					''
 				)}
@@ -33,38 +29,42 @@ function Navbar({ setCurrentDisplay }) {
 				// hides/shows dropdown when layout is mobile
 				style={screenWidth <= mobileSize ? { height: buttonsHeight } : {}}
 			>
-				<button
-					onClick={() => {
-						setCurrentDisplay('Main');
-						if (screenWidth <= mobileSize) dropDown();
-					}}
-				>
-					Main
-				</button>
-				<button
-					onClick={() => {
-						setCurrentDisplay('Fixtures');
-						if (screenWidth <= mobileSize) dropDown();
-					}}
-				>
-					Fixtures
-				</button>
-				<button
-					onClick={() => {
-						setCurrentDisplay('Results');
-						if (screenWidth <= mobileSize) dropDown();
-					}}
-				>
-					Results
-				</button>
-				<button
-					onClick={() => {
-						setCurrentDisplay('Table');
-						if (screenWidth <= mobileSize) dropDown();
-					}}
-				>
-					Table
-				</button>
+				<Link to="/">
+					<button
+						onClick={() => {
+							if (screenWidth <= mobileSize) dropDown();
+						}}
+					>
+						Main
+					</button>
+				</Link>
+				<Link to="/fixtures">
+					<button
+						onClick={() => {
+							if (screenWidth <= mobileSize) dropDown();
+						}}
+					>
+						Fixtures
+					</button>
+				</Link>
+				<Link to="/results">
+					<button
+						onClick={() => {
+							if (screenWidth <= mobileSize) dropDown();
+						}}
+					>
+						Results
+					</button>
+				</Link>
+				<Link to="/standings">
+					<button
+						onClick={() => {
+							if (screenWidth <= mobileSize) dropDown();
+						}}
+					>
+						Table
+					</button>
+				</Link>
 			</div>
 		</nav>
 	);

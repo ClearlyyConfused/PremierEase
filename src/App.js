@@ -1,37 +1,31 @@
-import { useState } from 'react';
 import Navbar from './Pages/Navbar/Navbar';
 import Main from './Pages/Main/Main';
 import Fixtures from './Pages/Fixtures/Fixtures';
 import Results from './Pages/Results/Results';
 import Table from './Pages/Table/Table';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App({ leagueNews, leagueFixtures, leagueStandings }) {
-	// screen to display
-	const [currentDisplay, setCurrentDisplay] = useState('Main');
-
 	return (
 		<div className="App">
-			{/* navbar that setsCurrentDisplay */}
-			<Navbar setCurrentDisplay={setCurrentDisplay} />
-
-			{/* If currentDisplay = Main -> Main display that has all general information */}
-			{/* If currentDisplay = Standings -> Standings display that has in-depth standings information */}
-			{/* If currentDisplay = Matches -> League Matches display that has in-depth matches information information */}
-			{currentDisplay === 'Main' ? (
-				<Main
-					leagueNews={leagueNews}
-					leagueFixtures={leagueFixtures}
-					leagueStandings={leagueStandings}
-				/>
-			) : currentDisplay === 'Fixtures' ? (
-				<Fixtures leagueFixtures={leagueFixtures} />
-			) : currentDisplay === 'Results' ? (
-				<Results leagueFixtures={leagueFixtures} />
-			) : currentDisplay === 'Table' ? (
-				<Table leagueStandings={leagueStandings} />
-			) : (
-				''
-			)}
+			<BrowserRouter>
+				<Navbar />
+				<Routes>
+					<Route
+						path="/"
+						element={
+							<Main
+								leagueNews={leagueNews}
+								leagueFixtures={leagueFixtures}
+								leagueStandings={leagueStandings}
+							/>
+						}
+					></Route>
+					<Route path="/fixtures" element={<Fixtures leagueFixtures={leagueFixtures} />}></Route>
+					<Route path="/results" element={<Results leagueFixtures={leagueFixtures} />}></Route>
+					<Route path="/standings" element={<Table leagueStandings={leagueStandings} />}></Route>
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }

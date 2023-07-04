@@ -1,10 +1,10 @@
 $mobile-size: 620px; // size in which layout changes to mobile, same in Navbar.js
 
 .navbar {
-	background-color: rgb(55, 0, 60);
 	display: flex;
-	box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.4);
 	z-index: 2; // in front of table standings header
+	box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.4);
+	background-color: rgb(55, 0, 60);
 
 	@media (max-width: $mobile-size) {
 		flex-direction: column;
@@ -12,32 +12,32 @@ $mobile-size: 620px; // size in which layout changes to mobile, same in Navbar.j
 
 	.logo {
 		display: flex;
-		width: 120px; // same as buttons
 		margin-right: 10px;
+		width: 120px; // same as buttons
 
 		.lion-logo {
-			height: 40px;
+			filter: brightness(0) invert(1);
 			padding: 10px;
 			padding-right: 0px;
 			width: auto;
-			filter: brightness(0) invert(1);
+			height: 40px;
 		}
 		.text-logo {
-			height: 33px;
-			width: auto;
+			filter: brightness(0) invert(1);
 			margin-top: auto;
 			margin-bottom: 1px;
 			padding: 10px;
-			filter: brightness(0) invert(1);
+			width: auto;
+			height: 33px;
 		}
 
 		.hamburger-icon {
+			filter: brightness(0) invert(1);
 			margin: auto;
 			margin-right: 0px;
 			padding: 15px;
 			width: auto;
 			height: 30px;
-			filter: brightness(0) invert(1);
 		}
 		.hamburger-icon:hover {
 			cursor: pointer;
@@ -50,33 +50,37 @@ $mobile-size: 620px; // size in which layout changes to mobile, same in Navbar.j
 
 	.buttons {
 		display: flex;
-		overflow: hidden;
 		transition: height 0.5s;
+		overflow: hidden;
 
 		@media (max-width: $mobile-size) {
 			flex-direction: column;
 			align-items: center;
 
+			a {
+				width: 100%;
+			}
 			button {
-				min-height: 60px; // same size as logo
 				width: 100% !important;
+				min-height: 60px; // same size as logo
 			}
 		}
 
 		button {
-			width: 120px;
-			background-color: transparent;
 			border: none;
+			background-color: transparent;
+			width: 120px;
+			height: 100%;
 			color: white;
-			font-family: inherit;
 			font-weight: bold;
 			font-size: 15px;
+			font-family: inherit;
 		}
 
 		button:hover {
 			transition: background-color 0.5s, color 0.5s;
-			color: black;
 			background-color: white;
+			color: black;
 		}
 	}
 }
