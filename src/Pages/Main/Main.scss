@@ -15,35 +15,54 @@
 
 	// container for standings table and matches table
 	.standings-matches {
+		box-sizing: border-box;
 		width: 100%;
-		min-width: 50vw;
+		min-width: 40vw;
 		height: fit-content;
+	}
+
+	// headers for all tables
+	h1 {
+		margin: 0;
+		border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+		border-radius: 10px 10px 0px 0px;
+		background: url('https://www.premierleague.com/resources/rebrand/v7.124.0/i/elements/backgrounds/primary-bg-with-graphic.svg');
+		padding: 10px 0px;
+		object-fit: cover;
+		color: white;
+		font-size: 28px;
+		text-align: center;
 	}
 
 	// matches table
 	.current-matchday-matches {
 		box-sizing: border-box;
+		margin: 20px;
+		border-top: none;
+		border-radius: 10px;
 		background-color: white;
-		padding: 20px;
-		width: 100%;
-
-		h1 {
-			margin: 0;
-			margin-bottom: 10px;
-			border-bottom: 1px solid rgba(128, 128, 128, 0.2);
-			padding-bottom: 10px;
-			font-size: 24px;
-		}
+		width: calc(100% - 40px); // subtracts margin from both sides
 
 		.matches-table {
 			display: flex;
 			flex-direction: column;
-			gap: 20px;
+			box-sizing: border-box;
+			border: 0.5px solid rgba(128, 128, 128, 0.2);
+			border-top: none;
+			border-radius: 0px 0px 10px 10px;
+			max-width: 100%;
 
+			.matches-date-pair:last-child {
+				border-bottom: 0px !important;
+			}
 			.matches-date-pair {
+				border-bottom: 0.5px solid rgba(128, 128, 128, 0.2);
+				padding-bottom: 16px;
+
 				// date
 				h2 {
-					font-size: 14px;
+					font-weight: 400;
+					font-size: 18px;
 					text-align: center;
 				}
 
@@ -71,9 +90,11 @@
 						.match-finished {
 							box-sizing: border-box;
 							border-radius: 5px;
-							padding: 2px;
-							min-width: 40px;
+							padding: 4px 0px;
+							min-width: 30px;
 							color: white;
+							font-weight: bold;
+							font-size: 10px;
 							text-align: center;
 						}
 						.match-live {
@@ -86,15 +107,12 @@
 							background-color: green;
 						}
 
-						// first team name
-						td:nth-child(2) {
-							width: 40px;
-							text-align: center;
-						}
-
-						// second team name
+						// first and second team names
+						td:nth-child(2),
 						td:nth-child(6) {
 							width: 40px;
+							font-weight: bold;
+							font-size: 18px;
 							text-align: center;
 						}
 
@@ -104,6 +122,7 @@
 							justify-content: center;
 							align-items: center;
 							box-sizing: border-box;
+							border-radius: 5px;
 							width: 80px;
 							height: 30px;
 							text-align: center;
@@ -139,16 +158,13 @@
 		width: 100%;
 		font-size: 18px;
 
-		h1 {
-			margin: 0;
-			margin-bottom: 10px;
-			border-bottom: 1px solid rgba(128, 128, 128, 0.2);
-			padding-bottom: 10px;
-			font-size: 24px;
-		}
-
 		.standings-table {
+			border: 0.5px solid rgba(128, 128, 128, 0.2);
+			border-top: none;
+			border-radius: 0px 0px 10px 10px;
 			border-spacing: 0px 5px;
+			padding: 16px;
+			max-width: 100%;
 
 			// table header
 			tr:first-of-type {
@@ -204,66 +220,73 @@
 	.news {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 30px;
-		box-sizing: border-box;
 		background-color: white;
 		padding: 20px;
+		width: 100%;
 		height: fit-content;
 
 		h1 {
 			margin: 0;
-			margin-bottom: -10px;
 			border-bottom: 1px solid rgba(128, 128, 128, 0.2);
 			padding-bottom: 10px;
 			width: 100%;
 		}
 
-		.article {
+		.articles {
 			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 10px;
-			box-sizing: border-box;
-			width: 100%;
-			max-width: 500px;
-			color: inherit;
-			text-decoration: none;
+			flex-direction: column;
+			gap: 30px;
+			border: 0.5px solid rgba(128, 128, 128, 0.2);
+			border-top: none;
+			border-radius: 0px 0px 10px 10px;
+			border-spacing: 0px 5px;
+			padding: 16px;
 
-			.article-info {
-				width: 100%;
-			}
+			.article {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 10px;
+				box-sizing: border-box;
+				color: inherit;
+				text-decoration: none;
 
-			// article source
-			p {
-				color: #e90052;
-				font-weight: bold;
-				font-size: 11px;
-			}
+				.article-info {
+					width: 100%;
+				}
 
-			// article title
-			h2 {
-				font-weight: 400;
-				font-size: 16px;
-			}
-			h2:hover {
-				text-decoration: underline;
-			}
+				// article source
+				p {
+					color: #e90052;
+					font-weight: bold;
+					font-size: 11px;
+				}
 
-			// thumbnail
-			.thumbnail-container {
-				min-width: 120px;
-				height: 120px;
-				overflow: hidden;
+				// article title
+				h2 {
+					font-weight: 400;
+					font-size: 16px;
+				}
+				h2:hover {
+					text-decoration: underline;
+				}
+
+				// thumbnail
+				.thumbnail-container {
+					min-width: 120px;
+					height: 120px;
+					overflow: hidden;
+				}
+				img {
+					transition: all 0.5s;
+					width: 120px;
+					height: 120px;
+				}
 			}
-			img {
-				transition: all 0.5s;
-				width: 120px;
-				height: 120px;
-			}
-		}
-		.article:hover {
-			img {
-				transform: scale(1.2);
+			.article:hover {
+				img {
+					transform: scale(1.1);
+				}
 			}
 		}
 	}

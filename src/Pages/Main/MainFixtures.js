@@ -9,7 +9,7 @@ function MainFixtures({ leagueFixtures }) {
 	} else {
 		return (
 			<section className="current-matchday-matches">
-				<h1>Matchday {currentMatchday}</h1>
+				<h1>Matchweek {currentMatchday}</h1>
 				<table className="matches-table">
 					{matchDatePair.map((pair) => {
 						// if matches on a date are a part of the current matchday
