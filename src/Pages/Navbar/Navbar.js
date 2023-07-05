@@ -8,9 +8,7 @@ import { Link } from 'react-router-dom';
 function Navbar({ leagueTeams }) {
 	const { dropDown, buttonsHeight, dropdownIcon } = NavbarLogic();
 	const { screenWidth } = ScreenWidth();
-	const mobileSize = 620; // size in which layout changes to mobile, same in Navbar.scss
-
-	console.log(leagueTeams);
+	const mobileSize = 850; // size in which layout changes to mobile, same in Navbar.scss
 
 	return (
 		<nav>

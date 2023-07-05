@@ -21,8 +21,14 @@ function App({ leagueNews, leagueFixtures, leagueStandings, leagueTeams }) {
 							/>
 						}
 					></Route>
-					<Route path="/fixtures" element={<Fixtures leagueFixtures={leagueFixtures} />}></Route>
-					<Route path="/results" element={<Results leagueFixtures={leagueFixtures} />}></Route>
+					<Route
+						path="/fixtures"
+						element={<Fixtures leagueFixtures={leagueFixtures} leagueTeams={leagueTeams} />}
+					></Route>
+					<Route
+						path="/results"
+						element={<Results leagueFixtures={leagueFixtures} leagueTeams={leagueTeams} />}
+					></Route>
 					<Route path="/standings" element={<Table leagueStandings={leagueStandings} />}></Route>
 				</Routes>
 			</BrowserRouter>

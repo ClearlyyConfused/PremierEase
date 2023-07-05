@@ -1,8 +1,9 @@
 // uses same css as results
 import SortFixtures from './SortFixtures';
 import ScreenWidth from '../../Helper/ScreenWidth';
+import stadium from '../../images/stadium.svg';
 
-function Fixtures({ leagueFixtures }) {
+function Fixtures({ leagueFixtures, leagueTeams }) {
 	const { screenWidth } = ScreenWidth();
 	let matches = leagueFixtures !== undefined ? SortFixtures(leagueFixtures) : [];
 
@@ -11,6 +12,7 @@ function Fixtures({ leagueFixtures }) {
 	} else {
 		return (
 			<table className="league-fixtures">
+				<h1>FIXTURES</h1>
 				{matches.map((dateMatchesPair) => {
 					// only returns finished matches
 					return (
@@ -19,20 +21,30 @@ function Fixtures({ leagueFixtures }) {
 							{dateMatchesPair[1].reverse().map((fixture) => {
 								return (
 									<tr className="match">
-										<td>{screenWidth >= 550 ? fixture.awayTeam.shortName : fixture.awayTeam.tla}</td>
+										<div>
+											<td>{screenWidth >= 550 ? fixture.awayTeam.shortName : fixture.awayTeam.tla}</td>
+											<td>
+												<img src={fixture.awayTeam.crest} alt={fixture.awayTeam.shortName} />
+											</td>
+											<td>
+												{new Date(fixture.utcDate).toLocaleString('en-US', {
+													hour: 'numeric',
+													minute: 'numeric',
+												})}
+											</td>
+											<td>
+												<img src={fixture.homeTeam.crest} alt={fixture.homeTeam.shortName} />
+											</td>
+											<td>{screenWidth >= 550 ? fixture.homeTeam.shortName : fixture.homeTeam.tla}</td>
+										</div>
 										<td>
-											<img src={fixture.awayTeam.crest} alt={fixture.awayTeam.shortName} />
-										</td>
-										<td>
-											{new Date(fixture.utcDate).toLocaleString('en-US', {
-												hour: 'numeric',
-												minute: 'numeric',
+											<img src={stadium} alt="" />
+											{leagueTeams.map((team) => {
+												if (fixture.homeTeam.shortName === team.shortName) {
+													return <p>{team.venue}</p>;
+												}
 											})}
 										</td>
-										<td>
-											<img src={fixture.homeTeam.crest} alt={fixture.homeTeam.shortName} />
-										</td>
-										<td>{screenWidth >= 550 ? fixture.homeTeam.shortName : fixture.homeTeam.tla}</td>
 									</tr>
 								);
 							})}
