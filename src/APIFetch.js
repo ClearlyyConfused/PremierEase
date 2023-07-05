@@ -25,6 +25,14 @@ function APIFetch() {
 			});
 	}
 
+	async function fetchTeams() {
+		return fetch('https://matchday-madness-backend.vercel.app/LeagueTeams')
+			.then((response) => response.json())
+			.then((data) => {
+				return data.teamsInfo;
+			});
+	}
+
 	async function fetchNews() {
 		return fetch('https://matchday-madness-backend.vercel.app/LeagueNews')
 			.then((response) => response.json())
@@ -65,8 +73,9 @@ function APIFetch() {
 	async function fetchData() {
 		const standings = await fetchStandings();
 		const fixtures = await fetchFixtures();
+		const teams = await fetchTeams();
 		const news = await fetchNews();
-		setApiData({ standings: standings, fixtures: fixtures, news: news });
+		setApiData({ standings: standings, fixtures: fixtures, teams: teams, news: news });
 	}
 
 	// fetches every 10 seconds
@@ -83,7 +92,12 @@ function APIFetch() {
 
 	// gives information to main App
 	return (
-		<App leagueNews={apiData.news} leagueFixtures={apiData.fixtures} leagueStandings={apiData.standings} />
+		<App
+			leagueNews={apiData.news}
+			leagueFixtures={apiData.fixtures}
+			leagueStandings={apiData.standings}
+			leagueTeams={apiData.teams}
+		/>
 	);
 }
 

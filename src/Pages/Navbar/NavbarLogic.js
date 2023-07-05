@@ -6,6 +6,8 @@ function NavbarLogic() {
 	// adjust buttons height and dropdown icon
 	const [buttonsHeight, setButtonsHeight] = useState('0px');
 	const [dropdownIcon, setDropdownIcon] = useState(hamburgerIcon);
+
+	// expands/minimizes dropdown
 	function dropDown() {
 		if (buttonsHeight === '250px') {
 			setButtonsHeight('0px');

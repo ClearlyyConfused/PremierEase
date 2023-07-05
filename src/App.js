@@ -5,11 +5,11 @@ import Results from './Pages/Results/Results';
 import Table from './Pages/Table/Table';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App({ leagueNews, leagueFixtures, leagueStandings }) {
+function App({ leagueNews, leagueFixtures, leagueStandings, leagueTeams }) {
 	return (
 		<div className="App">
 			<BrowserRouter>
-				<Navbar />
+				<Navbar leagueTeams={leagueTeams} />
 				<Routes>
 					<Route
 						path="/"
