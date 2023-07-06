@@ -26,12 +26,34 @@ function Fixtures({ leagueFixtures, leagueTeams }) {
 											<td>
 												<img src={fixture.awayTeam.crest} alt={fixture.awayTeam.shortName} />
 											</td>
-											<td>
-												{new Date(fixture.utcDate).toLocaleString('en-US', {
-													hour: 'numeric',
-													minute: 'numeric',
-												})}
-											</td>
+
+											{/* if match isn't live or finished, display date of match */}
+											{fixture.status === 'SCHEDULED' || fixture.status === 'TIMED' ? (
+												<td>
+													<td className="time">
+														{new Date(fixture.utcDate).toLocaleString('en-US', {
+															hour: 'numeric',
+															minute: 'numeric',
+														})}
+													</td>
+													<td className="match-scheduled">SCHEDULED</td>
+												</td>
+											) : (
+												// else display the current or final score
+												<td>
+													<td className="score">
+														<td>{fixture.score.fullTime.home}</td>
+														<td>{fixture.score.fullTime.away}</td>
+													</td>
+													{/* display match status */}
+													{fixture.status === 'IN_PLAY' || fixture.status === 'PAUSED' ? (
+														<td className="match-live">LIVE</td>
+													) : (
+														<td className="match-finished">FINISHED</td>
+													)}
+												</td>
+											)}
+
 											<td>
 												<img src={fixture.homeTeam.crest} alt={fixture.homeTeam.shortName} />
 											</td>

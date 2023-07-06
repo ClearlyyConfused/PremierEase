@@ -106,17 +106,33 @@ nav {
 			padding: 10px 7px;
 		}
 
-		p {
-			margin: 0;
-			padding: 0px 20px;
-			color: gray;
-			font-weight: bold;
-			line-height: 39px;
+		.text-button-container {
+			display: flex;
+			align-items: center;
+			> img {
+				filter: invert(82%) sepia(8%) saturate(357%) hue-rotate(248deg) brightness(96%) contrast(86%);
+				padding: 0px 10px;
+				width: 16px;
+				height: 16px;
+
+				&:hover {
+					transform: scale(1);
+				}
+			}
 
 			@media (max-width: $mobile-size) {
+				justify-content: center;
 				width: 100%;
 				text-align: center;
 			}
+		}
+
+		p {
+			margin: 0;
+			padding-left: 20px;
+			color: gray;
+			font-weight: bold;
+			line-height: 39px;
 		}
 
 		img {

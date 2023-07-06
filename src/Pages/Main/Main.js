@@ -4,11 +4,7 @@ import MainStandings from './MainStandings';
 import MainNews from './MainNews';
 
 function Main({ leagueNews, leagueStandings, leagueFixtures }) {
-	if (
-		leagueNews === undefined ||
-		leagueStandings === undefined ||
-		leagueFixtures === undefined
-	) {
+	if (leagueNews === undefined || leagueStandings === undefined || leagueFixtures === undefined) {
 		return <div>Loading...</div>;
 	} else {
 		return (

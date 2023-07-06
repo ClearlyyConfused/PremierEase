@@ -57,7 +57,7 @@ $mobile-width-3: 475px; // width at which gap between columns shorten
 
 		th {
 			padding: 0px $gap-between-columns;
-			color: #6c6c6c;
+			color: #87668a;
 			font-weight: bold;
 
 			@media (max-width: $mobile-width-3) {
@@ -109,6 +109,7 @@ $mobile-width-3: 475px; // width at which gap between columns shorten
 		z-index: 0; // behind table header
 		width: 100%;
 		max-width: 1200px;
+		color: #37003c;
 
 		td {
 			padding: 0px $gap-between-columns;
@@ -137,6 +138,7 @@ $mobile-width-3: 475px; // width at which gap between columns shorten
 		// club column
 		td:nth-child(3) {
 			width: 100%;
+			font-weight: 700;
 			text-align: left;
 		}
 		// right side columns {

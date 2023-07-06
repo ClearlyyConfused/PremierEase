@@ -1,6 +1,7 @@
 import './Navbar.css';
 import pl_lion from '../../images/Premier_League_Lion_Crown.png';
 import pl_logo from '../../images/Premier_league_text_logo.png';
+import external_icon from '../../images/external-link.svg';
 import NavbarLogic from './NavbarLogic';
 import ScreenWidth from '../../Helper/ScreenWidth';
 import { Link } from 'react-router-dom';
@@ -69,7 +70,10 @@ function Navbar({ leagueTeams }) {
 				</div>
 			</section>
 			<section className="bottom-buttons" style={screenWidth <= mobileSize ? { height: buttonsHeight } : {}}>
-				<p>Club Sites</p>
+				<div className="text-button-container">
+					<p>Club Sites</p>
+					<img src={external_icon} alt="" />
+				</div>
 				{leagueTeams !== undefined
 					? leagueTeams.map((team) => {
 							return (
