@@ -4,7 +4,7 @@ import TeamForm from './TeamForm';
 
 function TableRow({ team }) {
 	const { screenWidth } = ScreenWidth();
-	const mobileWidth = 750; // width at which form becomes a dropdown, same as in Table.scss
+	const mobileWidth = 640; // width at which form becomes a dropdown, same as in Table.scss
 
 	// determines height of team's form to display/hide when clicked
 	const [formDisplay, setFormDisplay] = useState('0px');
@@ -24,9 +24,9 @@ function TableRow({ team }) {
 				<img src={team.team.crest} alt={team.team.shortName} />
 			</td>
 			<td>
-				{screenWidth >= 480 // display full club name
+				{screenWidth >= 950 // display full club name
 					? team.team.shortName
-					: screenWidth >= 380 // display part club name
+					: screenWidth >= 365 // display part club name
 					? team.team.tla
 					: ''}
 				{/* do not display club name */}
@@ -39,11 +39,7 @@ function TableRow({ team }) {
 			<td>{team.points}</td>
 
 			{/* display either form or button to display form */}
-			{screenWidth > mobileWidth ? (
-				<TeamForm form={team.form} />
-			) : (
-				<td onClick={handleClick}>V</td>
-			)}
+			{screenWidth > mobileWidth ? <TeamForm form={team.form} /> : <td onClick={handleClick}>V</td>}
 			{/* display form dropdown */}
 			{screenWidth > mobileWidth ? (
 				''

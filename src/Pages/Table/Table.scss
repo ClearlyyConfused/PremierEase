@@ -1,44 +1,75 @@
-$gap-between-columns: 3px;
+// variables to keep column header and items the same size
 
-$position-column-width: 20px;
+$gap-between-columns: 10px;
+$gap-between-columns-2: 5px;
+
+$position-column-width: 70px;
+$position-column-width-2: 20px;
 
 $club-logo-column-width: 50px;
-$mobile-club-logo-column-width: 30px;
+$mobile-club-logo-column-width: 40px;
 
-$right-columns-width: 28px;
+$right-columns-width: 50px;
+$right-columns-width-2: 20px;
 
-$form-column-width: 300px;
+$form-column-width: 200px;
 $mobile-form-column-width: 40px;
 
-$mobile-width: 750px; // width at which form becomes a dropdown, same as in TableRow.js
+$mobile-width: 640px; // width at which form becomes a dropdown, same as in TableRow.js
+$mobile-width-2: 850px; // width at which columns headers are shortened, same as in Table.js
+$mobile-width-3: 475px; // width at which gap between columns shorten
 
 .league-table {
 	display: flex;
-	flex-direction: column;
-	overflow-y: scroll;
 	flex: 1;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
 	border-spacing: 0px;
+	padding-bottom: 30px;
+	overflow-y: scroll;
+
+	h1 {
+		box-sizing: border-box;
+		margin: 0;
+		box-shadow: inset 0px -3px 6px 0px rgba(0, 0, 0, 0.3);
+		background: url('../../images/primary-bg-with-graphic.svg');
+		padding: 10px;
+		width: 100%;
+		min-height: 200px;
+		color: white;
+		font-size: 60px;
+		line-height: 180px;
+		text-align: center;
+	}
 
 	// table header
 	tr:first-of-type :hover {
 		cursor: default;
 	}
 	tr:first-of-type {
-		z-index: 1; // in front of table rows
+		display: flex;
 		position: sticky;
 		top: 0px;
+		z-index: 1; // in front of table rows
 		background-color: white;
-		display: flex;
-		padding: 5px 0px;
+		padding: 15px 0px;
 
 		th {
 			padding: 0px $gap-between-columns;
 			color: #6c6c6c;
 			font-weight: bold;
+
+			@media (max-width: $mobile-width-3) {
+				padding: 0px $gap-between-columns-2;
+			}
 		}
 		// position column
 		th:nth-child(1) {
 			min-width: $position-column-width;
+			@media (max-width: $mobile-width-2) {
+				min-width: $position-column-width-2;
+			}
 		}
 		// club logo column
 		th:nth-child(2) {
@@ -60,6 +91,9 @@ $mobile-width: 750px; // width at which form becomes a dropdown, same as in Tabl
 		th:nth-child(8),
 		th:nth-child(9) {
 			min-width: $right-columns-width;
+			@media (max-width: $mobile-width-2) {
+				min-width: $right-columns-width-2;
+			}
 		}
 		// forms column
 		th:nth-child(10) {
@@ -73,9 +107,14 @@ $mobile-width: 750px; // width at which form becomes a dropdown, same as in Tabl
 	// table rows
 	tr {
 		z-index: 0; // behind table header
+		width: 100%;
+		max-width: 1200px;
 
 		td {
 			padding: 0px $gap-between-columns;
+			@media (max-width: $mobile-width-3) {
+				padding: 0px $gap-between-columns-2;
+			}
 
 			img {
 				width: $club-logo-column-width;
@@ -89,17 +128,16 @@ $mobile-width: 750px; // width at which form becomes a dropdown, same as in Tabl
 
 		// position column
 		td:nth-child(1) {
-			text-align: center;
 			min-width: $position-column-width;
+			text-align: center;
+			@media (max-width: $mobile-width-2) {
+				min-width: $position-column-width-2;
+			}
 		}
 		// club column
 		td:nth-child(3) {
 			width: 100%;
 			text-align: left;
-			@media (max-width: 375px) {
-				padding: 0;
-				font-size: 0px;
-			}
 		}
 		// right side columns {
 		td:nth-child(4),
@@ -110,6 +148,9 @@ $mobile-width: 750px; // width at which form becomes a dropdown, same as in Tabl
 		td:nth-child(9) {
 			min-width: $right-columns-width;
 			text-align: center;
+			@media (max-width: $mobile-width-2) {
+				min-width: $right-columns-width-2;
+			}
 		}
 		// points column
 		td:nth-child(9) {
@@ -117,8 +158,9 @@ $mobile-width: 750px; // width at which form becomes a dropdown, same as in Tabl
 		}
 		// form column
 		td:nth-child(10) {
-			text-align: center;
 			min-width: $form-column-width;
+			text-align: center;
+
 			@media (max-width: $mobile-width) {
 				min-width: $mobile-form-column-width;
 			}
@@ -134,15 +176,15 @@ $mobile-width: 750px; // width at which form becomes a dropdown, same as in Tabl
 	.form-container {
 		display: flex;
 		justify-content: center;
-		gap: 15px;
+		gap: 5px;
 		p {
 			margin: 0;
-			width: 35px;
-			height: 35px;
-			line-height: 35px;
-			border-radius: 35px;
+			border-radius: 5px;
+			width: 32px;
+			height: 32px;
 			color: white;
 			font-weight: bold;
+			line-height: 32px;
 		}
 		.win {
 			background-color: #13cf00;
@@ -157,19 +199,19 @@ $mobile-width: 750px; // width at which form becomes a dropdown, same as in Tabl
 
 	// form dropdown when in mobile layout
 	.form-dropdown {
-		overflow: hidden;
 		transition: height 0.5s;
+		overflow: hidden;
 		.form-dropdown-container {
 			display: flex;
 			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 			gap: 10px;
+			margin-bottom: 15px;
+			border-bottom: 1px solid black;
 			padding: 10px;
 			padding-bottom: 15px;
-			margin-bottom: 15px;
-			align-items: center;
-			justify-content: center;
 			font-weight: bold;
-			border-bottom: 1px solid black;
 		}
 	}
 }
