@@ -5,7 +5,7 @@ import ScreenWidth from '../../Helper/ScreenWidth';
 function Table({ leagueStandings }) {
 	const { screenWidth } = ScreenWidth();
 
-	const mobileWidth = 850; // same as mobile width 2 in table.scss
+	const mobileWidth = 860; // same as mobile width 2 in table.scss
 
 	if (leagueStandings === undefined) {
 		return <div>Loading...</div>;

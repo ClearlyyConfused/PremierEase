@@ -22,7 +22,7 @@ function Fixtures({ leagueFixtures, leagueTeams }) {
 								return (
 									<tr className="match">
 										<div>
-											<td>{screenWidth >= 550 ? fixture.awayTeam.shortName : fixture.awayTeam.tla}</td>
+											<td>{screenWidth > 550 ? fixture.awayTeam.shortName : fixture.awayTeam.tla}</td>
 											<td>
 												<img src={fixture.awayTeam.crest} alt={fixture.awayTeam.shortName} />
 											</td>
@@ -57,7 +57,7 @@ function Fixtures({ leagueFixtures, leagueTeams }) {
 											<td>
 												<img src={fixture.homeTeam.crest} alt={fixture.homeTeam.shortName} />
 											</td>
-											<td>{screenWidth >= 550 ? fixture.homeTeam.shortName : fixture.homeTeam.tla}</td>
+											<td>{screenWidth > 550 ? fixture.homeTeam.shortName : fixture.homeTeam.tla}</td>
 										</div>
 										<td>
 											<img src={stadium} alt="" />

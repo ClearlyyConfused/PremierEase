@@ -1,4 +1,5 @@
 // css for both results and fixture pages
+@use '../../variables';
 
 .league-results,
 .league-fixtures {
@@ -53,8 +54,8 @@
 				align-items: center;
 			}
 
-			@media (max-width: 850px) {
-				flex-direction: column;
+			@media (max-width: variables.$mobile-layout-width) {
+				flex-direction: column-reverse;
 				align-items: center;
 				padding-left: 0px;
 			}
@@ -163,7 +164,7 @@
 					text-overflow: ellipsis;
 				}
 
-				@media (max-width: 850px) {
+				@media (max-width: variables.$mobile-layout-width) {
 					width: fit-content;
 				}
 			}

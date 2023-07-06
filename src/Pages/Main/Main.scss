@@ -1,3 +1,5 @@
+@use '../../variables';
+
 .main {
 	display: flex;
 	flex: 1;
@@ -6,7 +8,7 @@
 	overflow-y: scroll;
 
 	// vertical mobile layout
-	@media (max-width: 850px) {
+	@media (max-width: variables.$mobile-layout-width) {
 		flex-wrap: wrap;
 		.standings {
 			min-width: 0px;
@@ -16,11 +18,16 @@
 	// container for standings table and matches table
 	.standings-matches {
 		box-sizing: border-box;
-		min-width: 40vw;
+		min-width: max(40vw, 420px);
 		height: fit-content;
 
-		@media (max-width: 850px) {
+		@media (max-width: variables.$mobile-layout-width) {
+			display: flex;
 			width: 100%;
+		}
+		@media (max-width: 800px) {
+			flex-direction: column;
+			min-width: 0px;
 		}
 	}
 

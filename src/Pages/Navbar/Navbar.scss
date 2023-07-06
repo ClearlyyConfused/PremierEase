@@ -1,4 +1,5 @@
-$mobile-size: 850px; // size in which layout changes to mobile, same in Navbar.js
+@use '../../variables';
+$mobile-size: variables.$mobile-layout-width; // size in which layout changes to mobile, same in Navbar.js
 
 nav {
 	z-index: 2;
