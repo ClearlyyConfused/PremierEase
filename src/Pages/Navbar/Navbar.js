@@ -5,11 +5,21 @@ import external_icon from '../../images/external-link.svg';
 import NavbarLogic from './NavbarLogic';
 import ScreenWidth from '../../Helper/ScreenWidth';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Navbar({ leagueTeams }) {
 	const { dropDown, buttonsHeight, dropdownIcon } = NavbarLogic();
 	const { screenWidth } = ScreenWidth();
-	const mobileSize = 860; // size in which layout changes to mobile, same in Navbar.scss
+	const mobileSize = 900; // size in which layout changes to mobile, same in Navbar.scss
+
+	// closes dropdown if open and out of mobile layout
+	useEffect(() => {
+		if (screenWidth > 900) {
+			if (buttonsHeight === '250px') {
+				dropDown();
+			}
+		}
+	}, [screenWidth]);
 
 	return (
 		<nav>

@@ -220,7 +220,7 @@
 
 				// position column
 				td:nth-child(1) {
-					width: 20px;
+					min-width: 20px;
 					text-align: center;
 				}
 				// club logo column
