@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import ScreenWidth from '../../Helper/ScreenWidth';
 import TeamForm from './TeamForm';
+import upChevron from '../../images/up-chevron-svgrepo-com.svg';
+import downChevron from '../../images/down-chevron-svgrepo-com.svg';
 
 function TableRow({ team }) {
 	const { screenWidth } = ScreenWidth();
-	const mobileWidth = 640; // width at which form becomes a dropdown, same as in Table.scss
+	const mobileWidth = 650; // width at which form becomes a dropdown, same as in Table.scss
 
 	// determines height of team's form to display/hide when clicked
 	const [formDisplay, setFormDisplay] = useState('0px');
@@ -24,9 +26,9 @@ function TableRow({ team }) {
 				<img src={team.team.crest} alt={team.team.shortName} />
 			</td>
 			<td>
-				{screenWidth >= 950 // display full club name
+				{screenWidth >= 735 // display full club name
 					? team.team.shortName
-					: screenWidth >= 365 // display part club name
+					: screenWidth >= 412 // display part club name
 					? team.team.tla
 					: ''}
 				{/* do not display club name */}
@@ -39,7 +41,13 @@ function TableRow({ team }) {
 			<td>{team.points}</td>
 
 			{/* display either form or button to display form */}
-			{screenWidth > mobileWidth ? <TeamForm form={team.form} /> : <td onClick={handleClick}>V</td>}
+			{screenWidth > mobileWidth ? (
+				<TeamForm form={team.form} />
+			) : (
+				<td onClick={handleClick}>
+					<img src={formDisplay === '0px' ? downChevron : upChevron} alt="dropdown" />
+				</td>
+			)}
 			{/* display form dropdown */}
 			{screenWidth > mobileWidth ? (
 				''

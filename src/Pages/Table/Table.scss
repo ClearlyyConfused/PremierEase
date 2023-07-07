@@ -2,7 +2,7 @@
 // variables to keep column header and items the same size
 
 $gap-between-columns: 10px;
-$gap-between-columns-2: 5px;
+$gap-between-columns-2: 7px;
 
 $position-column-width: 70px;
 $position-column-width-2: 20px;
@@ -16,9 +16,9 @@ $right-columns-width-2: 20px;
 $form-column-width: 200px;
 $mobile-form-column-width: 40px;
 
-$mobile-width: 640px; // width at which form becomes a dropdown, same as in TableRow.js
+$mobile-width: 650px; // width at which form becomes a dropdown, same as in TableRow.js
 $mobile-width-2: variables.$mobile-layout-width; // width at which columns headers are shortened, same as in Table.js
-$mobile-width-3: 475px; // width at which gap between columns shorten
+$mobile-width-3: 490px; // width at which gap between columns shorten, img gets smaller
 
 .league-table {
 	display: flex;
@@ -28,6 +28,7 @@ $mobile-width-3: 475px; // width at which gap between columns shorten
 	gap: 15px;
 	border-spacing: 0px;
 	padding-bottom: 30px;
+	overflow-x: hidden;
 	overflow-y: scroll;
 
 	h1 {
@@ -55,6 +56,7 @@ $mobile-width-3: 475px; // width at which gap between columns shorten
 		z-index: 1; // in front of table rows
 		background-color: white;
 		padding: 15px 0px;
+		font-size: 14px;
 
 		th {
 			padding: 0px $gap-between-columns;
@@ -63,6 +65,9 @@ $mobile-width-3: 475px; // width at which gap between columns shorten
 
 			@media (max-width: $mobile-width-3) {
 				padding: 0px $gap-between-columns-2;
+			}
+			@media (max-width: 380px) {
+				padding: 0px 4px;
 			}
 		}
 		// position column
@@ -76,7 +81,7 @@ $mobile-width-3: 475px; // width at which gap between columns shorten
 		th:nth-child(2) {
 			min-width: $club-logo-column-width;
 			text-align: center;
-			@media (max-width: 350px) {
+			@media (max-width: $mobile-width-3) {
 				min-width: $mobile-club-logo-column-width;
 			}
 		}
@@ -117,11 +122,14 @@ $mobile-width-3: 475px; // width at which gap between columns shorten
 			@media (max-width: $mobile-width-3) {
 				padding: 0px $gap-between-columns-2;
 			}
+			@media (max-width: 380px) {
+				padding: 0px 4px;
+			}
 
 			img {
 				width: $club-logo-column-width;
 				height: $club-logo-column-width;
-				@media (max-width: 350px) {
+				@media (max-width: $mobile-width-3) {
 					width: $mobile-club-logo-column-width;
 					height: $mobile-club-logo-column-width;
 				}
@@ -163,6 +171,11 @@ $mobile-width-3: 475px; // width at which gap between columns shorten
 		td:nth-child(10) {
 			min-width: $form-column-width;
 			text-align: center;
+
+			img {
+				width: 15px;
+				height: 15px;
+			}
 
 			@media (max-width: $mobile-width) {
 				min-width: $mobile-form-column-width;

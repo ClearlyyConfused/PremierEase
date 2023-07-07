@@ -10,11 +10,11 @@ import { useEffect } from 'react';
 function Navbar({ leagueTeams }) {
 	const { dropDown, buttonsHeight, dropdownIcon } = NavbarLogic();
 	const { screenWidth } = ScreenWidth();
-	const mobileSize = 900; // size in which layout changes to mobile, same in Navbar.scss
+	const mobileSize = 965; // size in which layout changes to mobile, same in Navbar.scss
 
 	// closes dropdown if open and out of mobile layout
 	useEffect(() => {
-		if (screenWidth > 900) {
+		if (screenWidth > 965) {
 			if (buttonsHeight === '250px') {
 				dropDown();
 			}
@@ -29,7 +29,7 @@ function Navbar({ leagueTeams }) {
 					<img className="text-logo" src={pl_logo} alt="Premier League text logo" />
 
 					{/* hamburger/cancel icon when in mobile layout */}
-					{screenWidth <= mobileSize ? (
+					{screenWidth < mobileSize ? (
 						<img className="hamburger-icon" src={dropdownIcon} alt="Hamburger Toggle" onClick={dropDown} />
 					) : (
 						''
@@ -39,12 +39,12 @@ function Navbar({ leagueTeams }) {
 				<div
 					className="buttons"
 					// hides/shows dropdown when layout is mobile
-					style={screenWidth <= mobileSize ? { height: buttonsHeight } : {}}
+					style={screenWidth < mobileSize ? { height: buttonsHeight } : {}}
 				>
 					<Link to="/">
 						<button
 							onClick={() => {
-								if (screenWidth <= mobileSize) dropDown(); // closes dropdown after going to a new page
+								if (screenWidth < mobileSize) dropDown(); // closes dropdown after going to a new page
 							}}
 						>
 							Main
@@ -53,7 +53,7 @@ function Navbar({ leagueTeams }) {
 					<Link to="/fixtures">
 						<button
 							onClick={() => {
-								if (screenWidth <= mobileSize) dropDown();
+								if (screenWidth < mobileSize) dropDown();
 							}}
 						>
 							Fixtures
@@ -62,7 +62,7 @@ function Navbar({ leagueTeams }) {
 					<Link to="/results">
 						<button
 							onClick={() => {
-								if (screenWidth <= mobileSize) dropDown();
+								if (screenWidth < mobileSize) dropDown();
 							}}
 						>
 							Results
@@ -71,7 +71,7 @@ function Navbar({ leagueTeams }) {
 					<Link to="/standings">
 						<button
 							onClick={() => {
-								if (screenWidth <= mobileSize) dropDown();
+								if (screenWidth < mobileSize) dropDown();
 							}}
 						>
 							Table
@@ -79,7 +79,7 @@ function Navbar({ leagueTeams }) {
 					</Link>
 				</div>
 			</section>
-			<section className="bottom-buttons" style={screenWidth <= mobileSize ? { height: buttonsHeight } : {}}>
+			<section className="bottom-buttons" style={screenWidth < mobileSize ? { height: buttonsHeight } : {}}>
 				<div className="text-button-container">
 					<p>Club Sites</p>
 					<img src={external_icon} alt="" />

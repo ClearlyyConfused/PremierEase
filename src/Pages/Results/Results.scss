@@ -165,6 +165,7 @@
 				}
 
 				@media (max-width: variables.$mobile-layout-width) {
+					margin-left: -30px;
 					width: fit-content;
 				}
 			}

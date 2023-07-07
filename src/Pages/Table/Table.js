@@ -5,7 +5,7 @@ import ScreenWidth from '../../Helper/ScreenWidth';
 function Table({ leagueStandings }) {
 	const { screenWidth } = ScreenWidth();
 
-	const mobileWidth = 860; // same as mobile width 2 in table.scss
+	const mobileWidth = 965; // same as mobile width 2 in table.scss
 
 	if (leagueStandings === undefined) {
 		return <div>Loading...</div>;
@@ -15,15 +15,15 @@ function Table({ leagueStandings }) {
 				<h1>TABLE</h1>
 				{/* table header */}
 				<tr>
-					<th>{screenWidth <= mobileWidth ? 'P' : 'Position'}</th>
+					<th>{screenWidth < mobileWidth ? 'P' : 'Position'}</th>
 					<th>Club</th>
 					<th></th> {/* header space for club name */}
-					<th>{screenWidth <= mobileWidth ? 'Pl' : 'Played'}</th>
-					<th>{screenWidth <= mobileWidth ? 'W' : 'Won'}</th>
-					<th>{screenWidth <= mobileWidth ? 'D' : 'Drawn'}</th>
-					<th>{screenWidth <= mobileWidth ? 'L' : 'Lost'}</th>
+					<th>{screenWidth < mobileWidth ? 'Pl' : 'Played'}</th>
+					<th>{screenWidth < mobileWidth ? 'W' : 'Won'}</th>
+					<th>{screenWidth < mobileWidth ? 'D' : 'Drawn'}</th>
+					<th>{screenWidth < mobileWidth ? 'L' : 'Lost'}</th>
 					<th>GD</th>
-					<th>{screenWidth <= mobileWidth ? 'Pts' : 'Points'}</th>
+					<th>{screenWidth < mobileWidth ? 'Pts' : 'Points'}</th>
 					<th>Form</th>
 				</tr>
 				{/* creates row displaying each team's info */}

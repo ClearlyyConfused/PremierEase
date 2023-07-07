@@ -22,13 +22,9 @@ function MainStandings({ leagueStandings }) {
 							<td>
 								<img src={team.team.crest} alt={team.team.shortName} />
 							</td>
-							<td>{screenWidth >= 350 ? team.team.shortName : team.team.tla}</td>
+							<td>{screenWidth >= 430 ? team.team.shortName : team.team.tla}</td>
 							<td>{team.playedGames}</td>
-							<td>
-								{team.goalDifference > 0
-									? '+' + team.goalDifference
-									: team.goalDifference}
-							</td>
+							<td>{team.goalDifference > 0 ? '+' + team.goalDifference : team.goalDifference}</td>
 							<td>{team.points}</td>
 						</tr>
 					);
