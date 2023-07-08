@@ -75,7 +75,7 @@ function APIFetch() {
 			.then((data) => {
 				let arr = [];
 				for (const img of data.newsImages[0].images_results) {
-					if (img.original_height === 405 && img.original_width === 720) {
+					if (img.original_height >= 720 && img.original_width >= 1080) {
 						arr.push(img);
 					}
 					if (arr.length === 5) {

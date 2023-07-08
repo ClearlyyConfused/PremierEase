@@ -1,7 +1,9 @@
 @use '../../variables';
+$left-columns-width: 400px;
 
 .main {
 	display: flex;
+	position: relative;
 	flex: 1;
 	background-color: white;
 	height: 100%;
@@ -17,12 +19,17 @@
 
 	// container for standings table and matches table
 	.standings-matches {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		z-index: 2;
 		box-sizing: border-box;
-		min-width: max(40vw, 420px);
+		width: $left-columns-width;
 		height: fit-content;
 
 		@media (max-width: variables.$mobile-layout-width) {
 			display: flex;
+			position: relative;
 			width: 100%;
 		}
 		@media (max-width: 800px) {
@@ -254,7 +261,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		background-color: white;
-		padding: 20px;
 		width: 100%;
 		height: fit-content;
 
@@ -262,42 +268,88 @@
 			margin: 0;
 			border: none !important;
 			background: none !important;
-			padding-bottom: 10px;
-			padding-left: 14px;
+			padding: 0px;
+			padding-top: 20px;
+			padding-left: $left-columns-width;
 			width: 100%;
 			color: #37003c;
 			text-align: left !important;
+
+			@media (max-width: variables.$mobile-layout-width) {
+				padding-left: 20px !important;
+			}
 		}
 
 		.article-images {
 			position: relative;
+			background-color: #37003c;
+			padding-top: 20px;
+			padding-right: 20px;
+			padding-bottom: 50px;
+			padding-left: $left-columns-width;
 			width: 100%;
 			overflow: hidden;
 
+			.image-info-container {
+				position: relative;
+			}
+
+			@media (max-width: variables.$mobile-layout-width) {
+				padding: 20px !important;
+			}
+
+			a {
+				&:hover {
+					img {
+						transform: scale(1.1);
+					}
+				}
+			}
+
 			.img-container {
 				width: 100%;
-				height: auto;
+				height: 400px;
+				overflow: hidden;
 			}
 			img {
 				animation: fade-in 1s;
+				transition: 0.25s transform;
 				width: 100%;
-				height: auto;
+				height: 400px;
+				object-fit: cover;
+				&:hover {
+					transform: scale(1.1);
+				}
 			}
-			p {
+			h2 {
 				position: absolute;
-				bottom: 10px; // accounts for bottom buttons
-				left: 0;
+				bottom: 0px;
+				left: 0px;
 				animation: fade-in 1s;
 				box-sizing: border-box;
+				margin: 0px;
 				background-color: rgba(0, 0, 0, 0.3);
 				padding: 20px;
 				width: 100%;
 				color: white;
+				font-weight: 800;
+				font-size: 30px;
+
+				@media (max-width: variables.$mobile-layout-width) {
+					padding: 20px !important;
+				}
 			}
 			.buttons {
-				position: absolute;
-				bottom: 0px;
-				left: 0px;
+				button:nth-child(1) {
+					position: absolute;
+					top: 50%;
+					left: 0px;
+				}
+				button:nth-child(2) {
+					position: absolute;
+					top: 50%;
+					right: 0px;
+				}
 			}
 		}
 
@@ -309,7 +361,12 @@
 			border-radius: 0px 0px 10px 10px;
 			border-spacing: 0px 5px;
 			padding: 16px;
+			padding-left: $left-columns-width;
 			width: 100%;
+
+			@media (max-width: variables.$mobile-layout-width) {
+				padding: 20px !important;
+			}
 
 			.article {
 				display: flex;
@@ -348,7 +405,7 @@
 					overflow: hidden;
 				}
 				img {
-					transition: all 0.5s;
+					transition: all 0.25s;
 					width: 120px;
 					height: 120px;
 				}
