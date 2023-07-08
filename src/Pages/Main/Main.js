@@ -3,7 +3,7 @@ import MainFixtures from './MainFixtures';
 import MainStandings from './MainStandings';
 import MainNews from './MainNews';
 
-function Main({ leagueNews, leagueStandings, leagueFixtures }) {
+function Main({ leagueNews, newsImages, leagueStandings, leagueFixtures }) {
 	if (leagueNews === undefined || leagueStandings === undefined || leagueFixtures === undefined) {
 		return <div>Loading...</div>;
 	} else {
@@ -13,7 +13,7 @@ function Main({ leagueNews, leagueStandings, leagueFixtures }) {
 					<MainFixtures leagueFixtures={leagueFixtures} />
 					<MainStandings leagueStandings={leagueStandings} />
 				</div>
-				<MainNews leagueNews={leagueNews} />
+				<MainNews leagueNews={leagueNews} newsImages={newsImages} />
 			</main>
 		);
 	}

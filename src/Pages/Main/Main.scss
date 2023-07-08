@@ -9,7 +9,7 @@
 
 	// vertical mobile layout
 	@media (max-width: variables.$mobile-layout-width) {
-		flex-wrap: wrap;
+		flex-wrap: wrap-reverse;
 		.standings {
 			min-width: 0px;
 		}
@@ -40,6 +40,7 @@
 		padding: 10px 0px;
 		object-fit: cover;
 		color: white;
+		font-weight: 800;
 		font-size: 28px;
 		text-align: center;
 	}
@@ -248,6 +249,7 @@
 		}
 	}
 
+	// news table
 	.news {
 		display: flex;
 		flex-wrap: wrap;
@@ -258,16 +260,51 @@
 
 		h1 {
 			margin: 0;
-			border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+			border: none !important;
+			background: none !important;
 			padding-bottom: 10px;
+			padding-left: 14px;
 			width: 100%;
+			color: #37003c;
+			text-align: left !important;
+		}
+
+		.article-images {
+			position: relative;
+			width: 100%;
+			overflow: hidden;
+
+			.img-container {
+				width: 100%;
+				height: auto;
+			}
+			img {
+				animation: fade-in 1s;
+				width: 100%;
+				height: auto;
+			}
+			p {
+				position: absolute;
+				bottom: 10px; // accounts for bottom buttons
+				left: 0;
+				animation: fade-in 1s;
+				box-sizing: border-box;
+				background-color: rgba(0, 0, 0, 0.3);
+				padding: 20px;
+				width: 100%;
+				color: white;
+			}
+			.buttons {
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+			}
 		}
 
 		.articles {
 			display: flex;
 			flex-direction: column;
 			gap: 30px;
-			border: 0.5px solid rgba(128, 128, 128, 0.2);
 			border-top: none;
 			border-radius: 0px 0px 10px 10px;
 			border-spacing: 0px 5px;
@@ -322,5 +359,14 @@
 				}
 			}
 		}
+	}
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }

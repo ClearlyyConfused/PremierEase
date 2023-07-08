@@ -5,7 +5,7 @@ import Results from './Pages/Results/Results';
 import Table from './Pages/Table/Table';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App({ leagueNews, leagueFixtures, leagueStandings, leagueTeams }) {
+function App({ leagueNews, newsImages, leagueFixtures, leagueStandings, leagueTeams }) {
 	return (
 		<div className="App">
 			<BrowserRouter>
@@ -18,6 +18,7 @@ function App({ leagueNews, leagueFixtures, leagueStandings, leagueTeams }) {
 								leagueNews={leagueNews}
 								leagueFixtures={leagueFixtures}
 								leagueStandings={leagueStandings}
+								newsImages={newsImages}
 							/>
 						}
 					></Route>

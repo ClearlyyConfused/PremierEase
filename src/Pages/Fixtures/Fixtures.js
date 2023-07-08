@@ -18,7 +18,7 @@ function Fixtures({ leagueFixtures, leagueTeams }) {
 					return (
 						<tr className="matches-on-date">
 							<h2>{dateMatchesPair[0]}</h2>
-							{dateMatchesPair[1].reverse().map((fixture) => {
+							{dateMatchesPair[1].map((fixture) => {
 								return (
 									<tr className="match">
 										<div>

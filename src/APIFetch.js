@@ -69,13 +69,37 @@ function APIFetch() {
 			});
 	}
 
+	async function fetchNewsImages() {
+		return fetch('https://matchday-madness-backend.vercel.app/LeagueNewsImages')
+			.then((response) => response.json())
+			.then((data) => {
+				let arr = [];
+				for (const img of data.newsImages[0].images_results) {
+					if (img.original_height === 405 && img.original_width === 720) {
+						arr.push(img);
+					}
+					if (arr.length === 5) {
+						return arr;
+					}
+				}
+				return arr;
+			});
+	}
+
 	// fetches all required data
 	async function fetchData() {
 		const standings = await fetchStandings();
 		const fixtures = await fetchFixtures();
 		const teams = await fetchTeams();
 		const news = await fetchNews();
-		setApiData({ standings: standings, fixtures: fixtures, teams: teams, news: news });
+		const newsImages = await fetchNewsImages();
+		setApiData({
+			standings: standings,
+			fixtures: fixtures,
+			teams: teams,
+			news: news,
+			newsImages: newsImages,
+		});
 	}
 
 	// fetches every 10 seconds
@@ -97,6 +121,7 @@ function APIFetch() {
 			leagueFixtures={apiData.fixtures}
 			leagueStandings={apiData.standings}
 			leagueTeams={apiData.teams}
+			newsImages={apiData.newsImages}
 		/>
 	);
 }

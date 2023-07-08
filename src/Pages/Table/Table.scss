@@ -172,9 +172,13 @@ $mobile-width-3: 490px; // width at which gap between columns shorten, img gets 
 			min-width: $form-column-width;
 			text-align: center;
 
+			// chevron
 			img {
 				width: 15px;
 				height: 15px;
+			}
+			.upchevron {
+				transform: scale(1.4);
 			}
 
 			@media (max-width: $mobile-width) {

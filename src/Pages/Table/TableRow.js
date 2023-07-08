@@ -45,7 +45,11 @@ function TableRow({ team }) {
 				<TeamForm form={team.form} />
 			) : (
 				<td onClick={handleClick}>
-					<img src={formDisplay === '0px' ? downChevron : upChevron} alt="dropdown" />
+					<img
+						className={formDisplay === '100px' ? 'upchevron' : ''} // scales up the up chevron to match down chevron
+						src={formDisplay === '0px' ? downChevron : upChevron}
+						alt="dropdown"
+					/>
 				</td>
 			)}
 			{/* display form dropdown */}

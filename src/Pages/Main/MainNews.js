@@ -1,6 +1,17 @@
-function MainNews({ leagueNews }) {
+import { useState } from 'react';
+import NewsImgDisplay from './NewsImgDisplay';
+
+function MainNews({ leagueNews, newsImages }) {
+	console.log(newsImages);
+	const [displayImage, setDisplayImage] = useState(0);
+
 	return (
 		<section className="news">
+			<NewsImgDisplay
+				img={newsImages[displayImage]}
+				displayImage={displayImage}
+				setDisplayImage={setDisplayImage}
+			/>
 			<h1>Latest News</h1>
 			<table className="articles">
 				{leagueNews.map((article) => {
