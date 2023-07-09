@@ -1,5 +1,5 @@
 @use '../../variables';
-$left-columns-width: 400px;
+$left-columns-width: 420px;
 
 .main {
 	display: flex;
@@ -24,6 +24,7 @@ $left-columns-width: 400px;
 		left: 0px;
 		z-index: 2;
 		box-sizing: border-box;
+		padding-bottom: 20px;
 		width: $left-columns-width;
 		height: fit-content;
 
@@ -190,8 +191,7 @@ $left-columns-width: 400px;
 	// standings table
 	.standings {
 		box-sizing: border-box;
-		background-color: white;
-		padding: 20px;
+		padding: 0px 20px;
 		width: 100%;
 		font-size: 18px;
 
@@ -307,6 +307,8 @@ $left-columns-width: 400px;
 			}
 
 			.img-container {
+				border-top-right-radius: 10px;
+				border-top-left-radius: 10px;
 				width: 100%;
 				height: 400px;
 				overflow: hidden;
@@ -391,8 +393,8 @@ $left-columns-width: 400px;
 
 		.articles {
 			display: flex;
-			flex-direction: column;
-			gap: 30px;
+			flex-wrap: wrap;
+			gap: 10px;
 			border-top: none;
 			border-radius: 0px 0px 10px 10px;
 			border-spacing: 0px 5px;
@@ -406,10 +408,13 @@ $left-columns-width: 400px;
 
 			.article {
 				display: flex;
-				justify-content: center;
+				flex-direction: column;
 				align-items: center;
 				gap: 10px;
 				box-sizing: border-box;
+				width: 250px;
+				height: 280px;
+				overflow: hidden;
 				color: inherit;
 				text-decoration: none;
 
@@ -419,36 +424,53 @@ $left-columns-width: 400px;
 
 				// article source
 				p {
-					color: #e90052;
-					font-weight: bold;
-					font-size: 11px;
+					margin: 0;
+					color: #87668a;
+					font-weight: 800;
+					font-size: 15px;
 				}
 
 				// article title
 				h2 {
+					-webkit-line-clamp: 3;
+					-webkit-box-orient: vertical;
+					display: -webkit-box;
+					overflow: hidden;
+					color: #37003c;
 					color: #37003c;
 					font-weight: 400;
 					font-size: 16px;
+					text-overflow: ellipsis;
+					text-overflow: ellipsis;
 				}
 				h2:hover {
 					text-decoration: underline;
 				}
 
-				// thumbnail
+				// have border radius not be hidden when overflow when hovered
 				.thumbnail-container {
-					min-width: 120px;
-					height: 120px;
+					border-radius: 10px;
+					width: 250px;
+					height: 150px;
 					overflow: hidden;
 				}
 				img {
 					transition: all 0.25s;
-					width: 120px;
-					height: 120px;
+					border-radius: 10px;
+					width: 250px;
+					height: 150px;
+					object-fit: cover;
+				}
+				.divider {
+					margin-top: auto;
+					background-color: rgba(0, 0, 0, 0.25);
+					width: 90%;
+					height: 0.5px;
 				}
 			}
 			.article:hover {
 				img {
-					transform: scale(1.1);
+					transform: scale(1.05);
 				}
 			}
 		}

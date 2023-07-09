@@ -39,7 +39,9 @@ function NewsImgDisplay({ img, displayImage, setDisplayImage, numOfImgs }) {
 					<div className="img-container">
 						<img src={img.original} alt="" />
 					</div>
-					<h2>{img.title}</h2>
+					<h2>
+						{img.source}: {img.title}
+					</h2>
 				</a>
 				<div className="buttons">
 					<button

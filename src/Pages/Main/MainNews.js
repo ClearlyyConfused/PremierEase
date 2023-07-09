@@ -25,6 +25,7 @@ function MainNews({ leagueNews, newsImages }) {
 								<p>{article.source}</p>
 								<h2>{article.title}</h2>
 							</div>
+							<div className="divider"></div>
 						</a>
 					);
 				})}
