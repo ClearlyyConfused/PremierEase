@@ -21,7 +21,12 @@ function NewsImgDisplay({ img, displayImage, setDisplayImage, numOfImgs }) {
 		let imgIndicators = [];
 		for (let i = 0; i < numOfImgs; i++) {
 			imgIndicators.push(
-				<div className={`img-indicator-${displayImage === i ? 'active' : 'inactive'}`}></div>
+				<div
+					onClick={() => {
+						setDisplayImage(i);
+					}}
+					className={`img-indicator-${displayImage === i ? 'active' : 'inactive'}`}
+				></div>
 			);
 		}
 		return imgIndicators;
