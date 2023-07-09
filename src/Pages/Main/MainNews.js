@@ -9,6 +9,7 @@ function MainNews({ leagueNews, newsImages }) {
 		<section className="news">
 			<NewsImgDisplay
 				img={newsImages[displayImage]}
+				numOfImgs={newsImages.length}
 				displayImage={displayImage}
 				setDisplayImage={setDisplayImage}
 			/>

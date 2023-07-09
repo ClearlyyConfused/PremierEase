@@ -11,7 +11,7 @@ $left-columns-width: 400px;
 
 	// vertical mobile layout
 	@media (max-width: variables.$mobile-layout-width) {
-		flex-wrap: wrap-reverse;
+		flex-wrap: wrap;
 		.standings {
 			min-width: 0px;
 		}
@@ -298,10 +298,10 @@ $left-columns-width: 400px;
 				padding: 20px !important;
 			}
 
-			a {
-				&:hover {
+			&:hover {
+				.img-container {
 					img {
-						transform: scale(1.1);
+						transform: scale(1.05);
 					}
 				}
 			}
@@ -310,15 +310,13 @@ $left-columns-width: 400px;
 				width: 100%;
 				height: 400px;
 				overflow: hidden;
-			}
-			img {
-				animation: fade-in 1s;
-				transition: 0.25s transform;
-				width: 100%;
-				height: 400px;
-				object-fit: cover;
-				&:hover {
-					transform: scale(1.1);
+
+				> img {
+					animation: fade-in 1s;
+					transition: 0.25s transform;
+					width: 100%;
+					height: 400px;
+					object-fit: cover;
 				}
 			}
 			h2 {
@@ -340,15 +338,47 @@ $left-columns-width: 400px;
 				}
 			}
 			.buttons {
-				button:nth-child(1) {
+				button {
 					position: absolute;
-					top: 50%;
-					left: 0px;
+					top: 40%;
+					transition: filter 0.5s;
+					border: none;
+					border-radius: 50px;
+					background: black;
+					padding: 0;
+					width: 50px;
+					height: 50px;
+
+					img {
+						filter: invert(1);
+					}
+					&:hover {
+						filter: invert(1);
+					}
+				}
+				button:nth-child(1) {
+					left: 15px;
 				}
 				button:nth-child(2) {
-					position: absolute;
-					top: 50%;
-					right: 0px;
+					right: 15px;
+				}
+			}
+
+			.img-indicators {
+				display: flex;
+				width: 100%;
+				height: 10px;
+
+				.img-indicator-active,
+				.img-indicator-inactive {
+					width: 100%;
+					height: 100%;
+				}
+				.img-indicator-active {
+					background-color: white;
+				}
+				.img-indicator-inactive {
+					background-color: gray;
 				}
 			}
 		}

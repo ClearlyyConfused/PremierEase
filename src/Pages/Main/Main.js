@@ -9,11 +9,11 @@ function Main({ leagueNews, newsImages, leagueStandings, leagueFixtures }) {
 	} else {
 		return (
 			<main className="main">
+				<MainNews leagueNews={leagueNews} newsImages={newsImages} />
 				<div className="standings-matches">
 					<MainFixtures leagueFixtures={leagueFixtures} />
 					<MainStandings leagueStandings={leagueStandings} />
 				</div>
-				<MainNews leagueNews={leagueNews} newsImages={newsImages} />
 			</main>
 		);
 	}
