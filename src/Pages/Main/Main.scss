@@ -55,7 +55,6 @@ $left-columns-width: 420px;
 
 	// matches table
 	.current-matchday-matches {
-		box-sizing: border-box;
 		margin: 20px;
 		border-top: none;
 		border-radius: 10px;
@@ -191,7 +190,7 @@ $left-columns-width: 420px;
 	// standings table
 	.standings {
 		box-sizing: border-box;
-		padding: 0px 20px;
+		padding: 20px;
 		width: 100%;
 		font-size: 18px;
 
@@ -412,11 +411,17 @@ $left-columns-width: 420px;
 				align-items: center;
 				gap: 10px;
 				box-sizing: border-box;
-				width: 250px;
-				height: 280px;
+				width: calc(33% - 5px);
+				height: 340px;
 				overflow: hidden;
 				color: inherit;
 				text-decoration: none;
+
+				@media (max-width: 600px) {
+					flex-direction: row;
+					width: 100%;
+					height: 200px;
+				}
 
 				.article-info {
 					width: 100%;
@@ -450,22 +455,36 @@ $left-columns-width: 420px;
 				// have border radius not be hidden when overflow when hovered
 				.thumbnail-container {
 					border-radius: 10px;
-					width: 250px;
-					height: 150px;
+					width: 100%;
+					height: 200px;
 					overflow: hidden;
+
+					@media (max-width: 600px) {
+						width: 100%;
+						height: 175px;
+					}
 				}
 				img {
 					transition: all 0.25s;
 					border-radius: 10px;
-					width: 250px;
-					height: 150px;
+					width: 100%;
+					height: 200px;
 					object-fit: cover;
+
+					@media (max-width: 600px) {
+						width: 100%;
+						height: 175px;
+					}
 				}
 				.divider {
 					margin-top: auto;
 					background-color: rgba(0, 0, 0, 0.25);
 					width: 90%;
 					height: 0.5px;
+
+					@media (max-width: 600px) {
+						display: none;
+					}
 				}
 			}
 			.article:hover {
