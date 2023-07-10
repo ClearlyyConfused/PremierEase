@@ -25,39 +25,48 @@ function APIFetch() {
 			});
 	}
 
-	async function fetchNews() {
-		return fetch('https://matchday-madness-backend.vercel.app/LeagueNews')
+	async function fetchTeams() {
+		return fetch('https://matchday-madness-backend.vercel.app/LeagueTeams')
 			.then((response) => response.json())
 			.then((data) => {
-				let news = [];
+				return data.teamsInfo;
+			});
+	}
 
-				for (const article of data.news[0].news_results) {
-					news = [
-						...news,
-						{
-							link: article.link,
-							snippet: article.snippet,
-							source: article.source,
-							thumbnail: article.thumbnail,
-							title: article.title,
-						},
-					];
+	/* for getting news from "news" section of google
+	async function fetchNews() {
+		return fetch('https://matchday-madness-backend.vercel.app/LeagueNewsImages')
+			.then((response) => response.json())
+			.then((data) => {
+				let arr = [];
+				for (const img of data.newsImages[0].images_results) {
+					if (img.original_height >= 720 && img.original_width >= 1080) {
+						arr.push(img);
+					}
+					if (arr.length === 9) {
+						return arr;
+					}
 				}
+				return arr;
+			});
+	}
+	*/
 
-				for (const article of data.news[0].people_also_search_for) {
-					news = [
-						...news,
-						{
-							link: article.news_results[0].link,
-							snippet: article.news_results[0].snippet,
-							source: article.news_results[0].source,
-							thumbnail: article.news_results[0].thumbnail,
-							title: article.news_results[0].title,
-						},
-					];
+	async function fetchNews() {
+		return fetch('https://matchday-madness-backend.vercel.app/LeagueNewsImages')
+			.then((response) => response.json())
+			.then((data) => {
+				let arr = [];
+				for (const img of data.newsImages[0].images_results) {
+					if (img.original_height >= 720 && img.original_width >= 1080) {
+						arr.push(img);
+					}
+					if (arr.length === 14) {
+						// number of images total
+						return arr;
+					}
 				}
-
-				return news;
+				return arr;
 			});
 	}
 
@@ -65,8 +74,18 @@ function APIFetch() {
 	async function fetchData() {
 		const standings = await fetchStandings();
 		const fixtures = await fetchFixtures();
-		const news = await fetchNews();
-		setApiData({ standings: standings, fixtures: fixtures, news: news });
+		const teams = await fetchTeams();
+		let newsData = await fetchNews();
+		const newsImages = newsData.splice(0, 5); // number of images for main display
+		const news = newsData;
+		console.log(news);
+		setApiData({
+			standings: standings,
+			fixtures: fixtures,
+			teams: teams,
+			news: news,
+			newsImages: newsImages,
+		});
 	}
 
 	// fetches every 10 seconds
@@ -83,7 +102,13 @@ function APIFetch() {
 
 	// gives information to main App
 	return (
-		<App leagueNews={apiData.news} leagueFixtures={apiData.fixtures} leagueStandings={apiData.standings} />
+		<App
+			leagueNews={apiData.news}
+			leagueFixtures={apiData.fixtures}
+			leagueStandings={apiData.standings}
+			leagueTeams={apiData.teams}
+			newsImages={apiData.newsImages}
+		/>
 	);
 }
 

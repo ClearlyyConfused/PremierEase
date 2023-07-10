@@ -4,13 +4,27 @@ function MainFixtures({ leagueFixtures }) {
 	const currentMatchday = leagueFixtures !== undefined ? leagueFixtures[0].season.currentMatchday : 0;
 	let matchDatePair = leagueFixtures !== undefined ? SortFixtures(leagueFixtures) : [];
 
+	function timeUntilNextMatch() {
+		for (const fixture of leagueFixtures) {
+			if (new Date(fixture.utcDate).getTime() > new Date().getTime()) {
+				return convertMilliseconds(new Date(fixture.utcDate) - new Date());
+			}
+		}
+	}
+
+	timeUntilNextMatch();
+
 	if (matchDatePair === undefined) {
 		return '';
 	} else {
 		return (
 			<section className="current-matchday-matches">
-				<h1>Matchday {currentMatchday}</h1>
+				<h1>Matchweek {currentMatchday}</h1>
 				<table className="matches-table">
+					<p className="next-match">
+						Next Match: {timeUntilNextMatch().days} days, {timeUntilNextMatch().hours} hours,{' '}
+						{timeUntilNextMatch().minutes} minutes
+					</p>
 					{matchDatePair.map((pair) => {
 						// if matches on a date are a part of the current matchday
 						if (pair[1][0].matchday === currentMatchday) {
@@ -23,18 +37,6 @@ function MainFixtures({ leagueFixtures }) {
 										{pair[1].map((match) => {
 											return (
 												<tr>
-													{/* display match status */}
-													{match.status === 'IN_PLAY' || match.status === 'PAUSED' ? (
-														<td className="match-live">LIVE</td>
-													) : match.status === 'SCHEDULED' ? (
-														// hides live message if game is not live
-														<td className="match-scheduled">SCH</td>
-													) : match.status === 'TIMED' ? (
-														<td className="match-scheduled">SCH</td>
-													) : (
-														<td className="match-finished">FIN</td>
-													)}
-
 													<td>{match.homeTeam.tla}</td>
 													<td>
 														<img src={match.homeTeam.crest} alt={match.homeTeam.shortName} />
@@ -42,17 +44,28 @@ function MainFixtures({ leagueFixtures }) {
 
 													{/* if match isn't live or finished, display date of match */}
 													{match.status === 'SCHEDULED' || match.status === 'TIMED' ? (
-														<td className="time">
-															{new Date(match.utcDate).toLocaleString('en-US', {
-																hour: 'numeric',
-																minute: 'numeric',
-															})}
+														<td>
+															<td className="time">
+																{new Date(match.utcDate).toLocaleString('en-US', {
+																	hour: 'numeric',
+																	minute: 'numeric',
+																})}
+															</td>
+															<td className="match-scheduled">SCHEDULED</td>
 														</td>
 													) : (
 														// else display the current or final score
-														<td className="score">
-															<td>{match.score.fullTime.home}</td>
-															<td>{match.score.fullTime.away}</td>
+														<td>
+															<td className="score">
+																<td>{match.score.fullTime.home}</td>
+																<td>{match.score.fullTime.away}</td>
+															</td>
+															{/* display match status */}
+															{match.status === 'IN_PLAY' || match.status === 'PAUSED' ? (
+																<td className="match-live">LIVE</td>
+															) : (
+																<td className="match-finished">FINISHED</td>
+															)}
 														</td>
 													)}
 
@@ -72,6 +85,26 @@ function MainFixtures({ leagueFixtures }) {
 			</section>
 		);
 	}
+}
+
+function convertMilliseconds(milliseconds) {
+	const millisecondsPerMinute = 1000 * 60;
+	const millisecondsPerHour = millisecondsPerMinute * 60;
+	const millisecondsPerDay = millisecondsPerHour * 24;
+
+	const days = Math.floor(milliseconds / millisecondsPerDay);
+	milliseconds %= millisecondsPerDay;
+
+	const hours = Math.floor(milliseconds / millisecondsPerHour);
+	milliseconds %= millisecondsPerHour;
+
+	const minutes = Math.floor(milliseconds / millisecondsPerMinute);
+
+	return {
+		days: days,
+		hours: hours,
+		minutes: minutes,
+	};
 }
 
 export default MainFixtures;

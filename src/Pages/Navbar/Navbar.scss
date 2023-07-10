@@ -1,86 +1,148 @@
-$mobile-size: 620px; // size in which layout changes to mobile, same in Navbar.js
+@use '../../variables';
+$mobile-size: variables.$mobile-layout-width; // size in which layout changes to mobile, same in Navbar.js
 
-.navbar {
-	display: flex;
-	z-index: 2; // in front of table standings header
-	box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.4);
-	background-color: rgb(55, 0, 60);
+nav {
+	z-index: 2;
+	box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.2);
 
-	@media (max-width: $mobile-size) {
-		flex-direction: column;
-	}
-
-	.logo {
+	.top-buttons {
 		display: flex;
-		margin-right: 10px;
-		width: 120px; // same as buttons
-
-		.lion-logo {
-			filter: brightness(0) invert(1);
-			padding: 10px;
-			padding-right: 0px;
-			width: auto;
-			height: 40px;
-		}
-		.text-logo {
-			filter: brightness(0) invert(1);
-			margin-top: auto;
-			margin-bottom: 1px;
-			padding: 10px;
-			width: auto;
-			height: 33px;
-		}
-
-		.hamburger-icon {
-			filter: brightness(0) invert(1);
-			margin: auto;
-			margin-right: 0px;
-			padding: 15px;
-			width: auto;
-			height: 30px;
-		}
-		.hamburger-icon:hover {
-			cursor: pointer;
-		}
-
-		@media (max-width: $mobile-size) {
-			width: 100%;
-		}
-	}
-
-	.buttons {
-		display: flex;
-		transition: height 0.5s;
-		overflow: hidden;
+		background-color: rgb(55, 0, 60);
 
 		@media (max-width: $mobile-size) {
 			flex-direction: column;
-			align-items: center;
+		}
 
-			a {
+		.logo {
+			display: flex;
+			margin-right: 10px;
+			width: 120px; // same as buttons
+
+			.lion-logo {
+				filter: brightness(0) invert(1);
+				padding: 10px;
+				padding-right: 0px;
+				width: auto;
+				height: 40px;
+			}
+			.text-logo {
+				filter: brightness(0) invert(1);
+				margin-top: auto;
+				margin-bottom: 1px;
+				padding: 10px;
+				width: auto;
+				height: 33px;
+			}
+
+			.hamburger-icon {
+				filter: brightness(0) invert(1);
+				margin: auto;
+				margin-right: 0px;
+				padding: 15px;
+				width: auto;
+				height: 30px;
+			}
+			.hamburger-icon:hover {
+				cursor: pointer;
+			}
+
+			@media (max-width: $mobile-size) {
 				width: 100%;
 			}
+		}
+
+		.buttons {
+			display: flex;
+			transition: height 0.5s;
+			overflow: hidden;
+
+			@media (max-width: $mobile-size) {
+				flex-direction: column;
+				align-items: center;
+
+				a {
+					width: 100%;
+				}
+				button {
+					width: 100% !important;
+					min-height: 60px; // same size as logo
+				}
+			}
+
 			button {
-				width: 100% !important;
-				min-height: 60px; // same size as logo
+				border: none;
+				background-color: transparent;
+				width: 120px;
+				height: 100%;
+				color: white;
+				font-weight: bold;
+				font-size: 15px;
+				font-family: inherit;
+			}
+
+			button:hover {
+				transition: background-color 0.5s, color 0.5s;
+				background-color: white;
+				color: #37003c;
+			}
+		}
+	}
+
+	.bottom-buttons {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		transition: height 0.5s;
+		box-sizing: border-box;
+		padding: 10px 0px;
+		padding-right: 10px;
+		width: 100%;
+		max-height: 300px; // dropdown height is same as upper buttons, max height easily changes it
+		overflow: hidden;
+
+		@media (max-width: $mobile-size) {
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 10px;
+			padding: 10px 7px;
+		}
+
+		.text-button-container {
+			display: flex;
+			align-items: center;
+			> img {
+				filter: invert(82%) sepia(8%) saturate(357%) hue-rotate(248deg) brightness(96%) contrast(86%);
+				padding: 0px 10px;
+				width: 16px;
+				height: 16px;
+
+				&:hover {
+					transform: scale(1);
+				}
+			}
+
+			@media (max-width: $mobile-size) {
+				justify-content: center;
+				width: 100%;
+				text-align: center;
 			}
 		}
 
-		button {
-			border: none;
-			background-color: transparent;
-			width: 120px;
-			height: 100%;
-			color: white;
+		p {
+			margin: 0;
+			padding-left: 20px;
+			color: gray;
 			font-weight: bold;
-			font-size: 15px;
-			font-family: inherit;
+			line-height: 39px;
 		}
 
-		button:hover {
-			transition: background-color 0.5s, color 0.5s;
-			background-color: white;
-			color: black;
+		img {
+			transition: transform 0.2s;
+			width: 35px;
+			height: 35px;
+			&:hover {
+				transform: scale(1.3);
+			}
 		}
 	}
 }

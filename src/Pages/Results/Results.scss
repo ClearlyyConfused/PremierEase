@@ -1,44 +1,71 @@
+// css for both results and fixture pages
+@use '../../variables';
+
 .league-results,
 .league-fixtures {
 	display: flex;
-	flex-direction: column;
 	flex: 1;
-	overflow-y: scroll;
+	flex-direction: column;
 	border-spacing: 0px;
+	overflow-y: scroll;
+
+	h1 {
+		box-sizing: border-box;
+		margin: 0;
+		box-shadow: inset 0px -3px 6px 0px rgba(0, 0, 0, 0.3);
+		background: url('../../images/primary-bg-with-graphic.svg');
+		padding: 10px;
+		min-height: 200px;
+		color: white;
+		font-size: 60px;
+		line-height: 180px;
+		text-align: center;
+	}
 
 	.matches-on-date {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
 
 		// date
 		h2 {
 			align-self: flex-start;
-			font-size: 20px;
-			font-weight: bold;
 			margin: 0;
 			padding: 20px;
+			font-weight: bold;
+			font-size: 20px;
 		}
 
 		.match:first-of-type {
 			border-top: 1px solid rgba(128, 128, 128, 0.2);
 		}
 		.match {
-			box-sizing: border-box;
 			display: flex;
 			justify-content: center;
-			align-items: center;
+			box-sizing: border-box;
 			border-bottom: 1px solid rgba(128, 128, 128, 0.2);
-			width: 100%;
 			padding: 10px;
+			padding-left: 150px; // accounts for stadium width on right
+			width: 100%;
+
+			// match-info and stadium container
+			div {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			@media (max-width: variables.$mobile-layout-width) {
+				flex-direction: column-reverse;
+				align-items: center;
+				padding-left: 0px;
+			}
 
 			td {
 				font-weight: bold;
 				img {
+					padding: 0px 10px;
 					width: 30px;
 					height: 30px;
-					padding: 0px 10px;
 				}
 			}
 
@@ -49,56 +76,99 @@
 
 			// both logos
 			td:nth-child(2),
-			td:nth-child(5) {
+			td:nth-child(4) {
 				display: flex;
 				align-items: center;
 			}
 
-			// score
-			td:nth-child(3),
-			td:nth-child(4) {
-				min-width: 35px;
-				min-height: 35px;
-				padding: 0;
+			td:nth-child(3) {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 5px;
+				width: 90px;
 				text-align: center;
-				background-color: #37003c;
-				color: white;
-				line-height: 35px;
+
+				td:nth-child(1) {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					box-sizing: border-box;
+					border-radius: 5px;
+					background-color: #37003c;
+					min-width: 90px !important;
+					height: 30px;
+					color: white;
+					font-size: 16px !important;
+					text-align: center;
+				}
+
+				// match status display
+				.match-live,
+				.match-scheduled,
+				.match-finished {
+					display: block !important;
+					box-sizing: border-box;
+					border-radius: 5px;
+					padding: 4px 0px;
+					width: 100%;
+					color: white;
+					font-weight: bold !important;
+					font-size: 10px !important;
+					text-align: center;
+				}
+				.match-live {
+					background-color: red;
+				}
+				.match-scheduled {
+					background-color: gray;
+				}
+				.match-finished {
+					background-color: green;
+				}
 			}
 
 			// both team names
 			td:nth-child(1),
-			td:nth-child(6) {
-				width: 100%;
+			td:nth-child(5) {
+				min-width: 150px;
+				color: #37003c;
+				font-size: 18px;
+
+				@media (max-width: 550px) {
+					// when team names are shortened
+					min-width: 50px;
+				}
+			}
+
+			// stadium
+			> td {
+				display: flex;
+				align-items: center;
+				width: 150px;
+				overflow: hidden;
+				color: #37003c;
+
+				img {
+					padding: 0px 5px !important;
+					width: 20px !important;
+					height: 20px !important;
+				}
+				p {
+					-webkit-line-clamp: 1;
+					-webkit-box-orient: vertical;
+					display: -webkit-box;
+					overflow: hidden;
+					font-size: 10px;
+					text-overflow: ellipsis;
+				}
+
+				@media (max-width: variables.$mobile-layout-width) {
+					margin-left: -30px;
+					width: fit-content;
+				}
 			}
 		}
-	}
-}
-
-.league-fixtures {
-	// time and 2nd team logo
-	td:nth-child(3),
-	td:nth-child(4) {
-		background-color: transparent !important;
-	}
-
-	// 2nd logo
-	td:nth-child(4) {
-		min-width: auto !important;
-		display: flex;
-		align-items: center;
-	}
-
-	// time
-	td:nth-child(3) {
-		color: #2f2f2f !important;
-		border: 1px solid rgba(128, 128, 128, 0.2);
-		padding: 0px 5px !important;
-		min-width: 80px !important;
-	}
-
-	// 2nd team name
-	td:nth-child(5) {
-		width: 100%;
 	}
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;700;800&display=swap');
+
 html,
 body,
 #root,
@@ -5,15 +7,17 @@ body,
 	height: 100%;
 }
 
+html,
 body {
-	margin: 0;
-	font-family: PremierSans-Bold, Arial, Helvetica Neue, Helvetica, sans-serif !important;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
 }
 
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	position: relative;
+	margin: 0;
+	font-family: 'Merriweather Sans', sans-serif !important;
 }
 
 button:hover {
