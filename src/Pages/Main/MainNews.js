@@ -2,7 +2,6 @@ import { useState } from 'react';
 import NewsImgDisplay from './NewsImgDisplay';
 
 function MainNews({ leagueNews, newsImages }) {
-	console.log(newsImages);
 	const [displayImage, setDisplayImage] = useState(0);
 
 	return (
@@ -19,7 +18,7 @@ function MainNews({ leagueNews, newsImages }) {
 					return (
 						<a className="article" href={article.link} target="_blank" rel="noopener noreferrer">
 							<div className="thumbnail-container">
-								<img src={article.thumbnail} alt="" srcset="" />
+								<img src={article.original} alt="" srcset="" />
 							</div>
 							<div className="article-info">
 								<p>{article.source}</p>
