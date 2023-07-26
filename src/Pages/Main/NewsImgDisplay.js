@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import rightChevron from '../../images/chevron_right_FILL0_wght400_GRAD0_opsz48.svg';
 import leftChevron from '../../images/chevron_left_FILL0_wght400_GRAD0_opsz48.svg';
+import TouchSweep from 'touchsweep';
 
 function NewsImgDisplay({ img, displayImage, setDisplayImage, numOfImgs }) {
 	useEffect(() => {
@@ -15,6 +16,35 @@ function NewsImgDisplay({ img, displayImage, setDisplayImage, numOfImgs }) {
 		return () => {
 			clearTimeout(autoNextImg);
 		};
+	}, [displayImage]);
+
+	useEffect(() => {
+		const area = document.getElementsByClassName('img-container')[0];
+		const data = {
+			value: 1,
+		};
+		const touchThreshold = 20;
+
+		const touchSweepInstance = new TouchSweep(area, data, touchThreshold);
+
+		// Then listen for custom swipe events and do your magic:
+
+		if (area) {
+			area.addEventListener('swiperight', (event) => {
+				if (displayImage === 0) {
+					setDisplayImage(numOfImgs - 1);
+				} else {
+					setDisplayImage(displayImage - 1);
+				}
+			});
+			area.addEventListener('swipeleft', (event) => {
+				if (displayImage === numOfImgs - 1) {
+					setDisplayImage(0);
+				} else {
+					setDisplayImage(displayImage + 1);
+				}
+			});
+		}
 	}, [displayImage]);
 
 	function createImgIndicators() {
