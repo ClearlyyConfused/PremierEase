@@ -78,7 +78,6 @@ function APIFetch() {
 		let newsData = await fetchNews();
 		const newsImages = newsData.splice(0, 5); // number of images for main display
 		const news = newsData;
-		console.log(news);
 		setApiData({
 			standings: standings,
 			fixtures: fixtures,
