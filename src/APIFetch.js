@@ -10,7 +10,7 @@ function APIFetch() {
 	});
 
 	async function fetchStandings() {
-		return fetch('https://matchday-madness-backend.vercel.app/LeagueStandings')
+		return fetch('https://premier-ease-backend.vercel.app/LeagueStandings')
 			.then((response) => response.json())
 			.then((data) => {
 				return data.standings;
@@ -18,7 +18,7 @@ function APIFetch() {
 	}
 
 	async function fetchFixtures() {
-		return fetch('https://matchday-madness-backend.vercel.app/LeagueMatches')
+		return fetch('https://premier-ease-backend.vercel.app/LeagueMatches')
 			.then((response) => response.json())
 			.then((data) => {
 				return data.matches;
@@ -26,7 +26,7 @@ function APIFetch() {
 	}
 
 	async function fetchTeams() {
-		return fetch('https://matchday-madness-backend.vercel.app/LeagueTeams')
+		return fetch('https://premier-ease-backend.vercel.app/LeagueTeams')
 			.then((response) => response.json())
 			.then((data) => {
 				return data.teamsInfo;
@@ -35,7 +35,7 @@ function APIFetch() {
 
 	/* for getting news from "news" section of google
 	async function fetchNews() {
-		return fetch('https://matchday-madness-backend.vercel.app/LeagueNewsImages')
+		return fetch('https://premier-ease-backend.vercel.app/LeagueNewsImages')
 			.then((response) => response.json())
 			.then((data) => {
 				let arr = [];
@@ -53,7 +53,7 @@ function APIFetch() {
 	*/
 
 	async function fetchNews() {
-		return fetch('https://matchday-madness-backend.vercel.app/LeagueNewsImages')
+		return fetch('https://premier-ease-backend.vercel.app/LeagueNewsImages')
 			.then((response) => response.json())
 			.then((data) => {
 				let arr = [];
