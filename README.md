@@ -20,7 +20,7 @@ https://premier-ease.vercel.app/
 
 ## Related
 
-- [Premier Ease Backend](https://github.com/ClearlyyConfused/matchday_madness_backend)
+- [Premier Ease Backend](https://github.com/ClearlyyConfused/PremierEase_backend)
 
 ## Screenshots 📸
 
