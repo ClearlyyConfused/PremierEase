@@ -3,10 +3,13 @@ import SortFixtures from './SortFixtures';
 import ScreenWidth from '../../Helper/ScreenWidth';
 import stadium from '../../images/stadium.svg';
 import Loading from '../../Helper/Loading/Loading';
+import { useState } from 'react';
+import FilterClubs from '../FilterClubs/FilterClubs';
 
 function Fixtures({ leagueFixtures, leagueTeams }) {
+	const [clubFilter, setClubFilter] = useState('All Clubs');
 	const { screenWidth } = ScreenWidth();
-	let matches = leagueFixtures !== undefined ? SortFixtures(leagueFixtures) : [];
+	let matches = leagueFixtures !== undefined ? SortFixtures(leagueFixtures, clubFilter) : [];
 
 	if (leagueFixtures === undefined) {
 		return <Loading />;
@@ -14,6 +17,7 @@ function Fixtures({ leagueFixtures, leagueTeams }) {
 		return (
 			<table className="league-fixtures">
 				<h1>FIXTURES</h1>
+				<FilterClubs clubFilter={clubFilter} setClubFilter={setClubFilter} leagueTeams={leagueTeams} />
 				{matches.map((dateMatchesPair) => {
 					// only returns finished matches
 					return (

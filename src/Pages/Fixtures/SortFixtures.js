@@ -1,10 +1,16 @@
-function SortFixtures(leagueFixtures) {
+function SortFixtures(leagueFixtures, team = 'All Clubs') {
 	let matches = [];
 
 	for (const fixture of leagueFixtures) {
 		// skips finished matches
 		if (fixture.status === 'FINISHED') {
 			continue;
+		}
+		// skips non-filtered clubs
+		if (team !== 'All Clubs') {
+			if (fixture.homeTeam.shortName !== team && fixture.awayTeam.shortName !== team) {
+				continue;
+			}
 		}
 
 		// get fixture day
