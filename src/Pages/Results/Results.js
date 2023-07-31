@@ -2,13 +2,14 @@ import './Results.css';
 import SortResults from './SortResults';
 import ScreenWidth from '../../Helper/ScreenWidth';
 import stadium from '../../images/stadium.svg';
+import Loading from '../../Helper/Loading/Loading';
 
 function Results({ leagueFixtures, leagueTeams }) {
 	const { screenWidth } = ScreenWidth();
 	let matches = leagueFixtures !== undefined ? SortResults(leagueFixtures) : [];
 
 	if (leagueFixtures === undefined) {
-		return <div>Loading...</div>;
+		return <Loading />;
 	} else {
 		return (
 			<table className="league-results">

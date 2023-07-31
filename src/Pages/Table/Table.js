@@ -1,6 +1,7 @@
 import './Table.css';
 import TableRow from './TableRow';
 import ScreenWidth from '../../Helper/ScreenWidth';
+import Loading from '../../Helper/Loading/Loading';
 
 function Table({ leagueStandings }) {
 	const { screenWidth } = ScreenWidth();
@@ -8,7 +9,7 @@ function Table({ leagueStandings }) {
 	const mobileWidth = 965; // same as mobile width 2 in table.scss
 
 	if (leagueStandings === undefined) {
-		return <div>Loading...</div>;
+		return <Loading />;
 	} else {
 		return (
 			<table className="league-table">
