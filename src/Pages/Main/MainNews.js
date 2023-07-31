@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import NewsImgDisplay from './NewsImgDisplay';
+import backupImage from '../../images/Premier_league_text_logo.png';
 
 function MainNews({ leagueNews, newsImages }) {
 	const [displayImage, setDisplayImage] = useState(0);
@@ -14,11 +15,20 @@ function MainNews({ leagueNews, newsImages }) {
 			/>
 			<h1>Latest News</h1>
 			<table className="articles">
-				{leagueNews.map((article) => {
+				{leagueNews.map((article, index) => {
 					return (
 						<a className="article" href={article.link} target="_blank" rel="noopener noreferrer">
 							<div className="thumbnail-container">
-								<img src={article.original} alt="" srcset="" />
+								<img
+									src={article.original}
+									alt={article.title}
+									srcset=""
+									// if image is not found (Ex. deleted)
+									onError={({ currentTarget }) => {
+										currentTarget.onerror = null; // prevents looping
+										currentTarget.src = backupImage;
+									}}
+								/>
 							</div>
 							<div className="article-info">
 								<p>{article.source}</p>

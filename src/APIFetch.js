@@ -58,7 +58,7 @@ function APIFetch() {
 			.then((data) => {
 				let arr = [];
 				for (const img of data.newsImages[0].images_results) {
-					if (img.original_height >= 720 && img.original_width >= 1080) {
+					if (img.original_height >= 480 && img.original_width >= 854) {
 						arr.push(img);
 					}
 					if (arr.length === 14) {
@@ -76,6 +76,7 @@ function APIFetch() {
 		const fixtures = await fetchFixtures();
 		const teams = await fetchTeams();
 		let newsData = await fetchNews();
+		console.log(newsData);
 		const newsImages = newsData.splice(0, 5); // number of images for main display
 		const news = newsData;
 		setApiData({

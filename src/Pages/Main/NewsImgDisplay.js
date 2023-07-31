@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import rightChevron from '../../images/chevron_right_FILL0_wght400_GRAD0_opsz48.svg';
 import leftChevron from '../../images/chevron_left_FILL0_wght400_GRAD0_opsz48.svg';
 import TouchSweep from 'touchsweep';
+import backupImage from '../../images/Premier_league_text_logo.png';
 
 function NewsImgDisplay({ img, displayImage, setDisplayImage, numOfImgs }) {
 	useEffect(() => {
@@ -62,12 +63,23 @@ function NewsImgDisplay({ img, displayImage, setDisplayImage, numOfImgs }) {
 		return imgIndicators;
 	}
 
+	if (!img) {
+		return <div></div>;
+	}
+
 	return (
 		<div key={displayImage} className="article-images">
 			<div className="image-info-container">
 				<a href={img.link} target="_blank" rel="noreferrer">
 					<div className="img-container">
-						<img src={img.original} alt="" />
+						<img
+							src={img.original}
+							alt="" // if image is not found (Ex. deleted)
+							onError={({ currentTarget }) => {
+								currentTarget.onerror = null; // prevents looping
+								currentTarget.src = backupImage;
+							}}
+						/>
 					</div>
 					<div className="title-container">
 						<h2>
