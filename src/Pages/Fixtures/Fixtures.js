@@ -8,8 +8,14 @@ import FilterClubs from '../FilterClubs/FilterClubs';
 
 function Fixtures({ leagueFixtures, leagueTeams }) {
 	const [clubFilter, setClubFilter] = useState('All Clubs');
+	const [startDateFilter, setStartDateFilter] = useState();
+	const [endDateFilter, setEndFilter] = useState();
 	const { screenWidth } = ScreenWidth();
-	let matches = leagueFixtures !== undefined ? SortFixtures(leagueFixtures, clubFilter) : [];
+
+	let matches =
+		leagueFixtures !== undefined
+			? SortFixtures(leagueFixtures, clubFilter, startDateFilter, endDateFilter)
+			: [];
 
 	if (leagueFixtures === undefined) {
 		return <Loading />;
@@ -17,7 +23,13 @@ function Fixtures({ leagueFixtures, leagueTeams }) {
 		return (
 			<table className="league-fixtures">
 				<h1>FIXTURES</h1>
-				<FilterClubs clubFilter={clubFilter} setClubFilter={setClubFilter} leagueTeams={leagueTeams} />
+				<FilterClubs
+					clubFilter={clubFilter}
+					setClubFilter={setClubFilter}
+					leagueTeams={leagueTeams}
+					setStartDateFilter={setStartDateFilter}
+					setEndFilter={setEndFilter}
+				/>
 				{matches.map((dateMatchesPair) => {
 					// only returns finished matches
 					return (

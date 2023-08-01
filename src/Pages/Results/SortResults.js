@@ -1,4 +1,4 @@
-function SortResults(leagueFixtures, team = 'All Clubs') {
+function SortResults(leagueFixtures, team = 'All Clubs', startDate, endDate) {
 	let matches = [];
 
 	for (const fixture of leagueFixtures) {
@@ -21,8 +21,22 @@ function SortResults(leagueFixtures, team = 'All Clubs') {
 			weekday: 'long',
 		});
 
-		let f = false;
+		// skips fixture if its before start date filter
+		if (startDate) {
+			if (new Date(startDate) >= new Date(fixtureDate)) {
+				continue;
+			}
+		}
+		// skips fixture if its after end date filter
+		if (endDate) {
+			// makes it inclusive of the last date
+			let date = new Date(endDate);
+			if (date.setDate(date.getDate() + 1) <= new Date(fixtureDate)) {
+				continue;
+			}
+		}
 
+		let f = false;
 		// if fixture date in array, add it to the array for that date
 		for (const dateMatchesPair of matches) {
 			if (dateMatchesPair[0] === fixtureDate) {
@@ -30,7 +44,6 @@ function SortResults(leagueFixtures, team = 'All Clubs') {
 				f = true;
 			}
 		}
-
 		// if fixture date not in the array, add the date and fixture
 		if (!f) {
 			matches = [...matches, [fixtureDate, [fixture]]];

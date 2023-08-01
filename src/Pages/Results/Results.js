@@ -8,8 +8,14 @@ import { useState } from 'react';
 
 function Results({ leagueFixtures, leagueTeams }) {
 	const [clubFilter, setClubFilter] = useState('All Clubs');
+	const [startDateFilter, setStartDateFilter] = useState();
+	const [endDateFilter, setEndFilter] = useState();
 	const { screenWidth } = ScreenWidth();
-	let matches = leagueFixtures !== undefined ? SortResults(leagueFixtures, clubFilter) : [];
+
+	let matches =
+		leagueFixtures !== undefined
+			? SortResults(leagueFixtures, clubFilter, startDateFilter, endDateFilter)
+			: [];
 
 	if (leagueFixtures === undefined) {
 		return <Loading />;
@@ -17,7 +23,13 @@ function Results({ leagueFixtures, leagueTeams }) {
 		return (
 			<table className="league-results">
 				<h1>RESULTS</h1>
-				<FilterClubs clubFilter={clubFilter} setClubFilter={setClubFilter} leagueTeams={leagueTeams} />
+				<FilterClubs
+					clubFilter={clubFilter}
+					setClubFilter={setClubFilter}
+					leagueTeams={leagueTeams}
+					setStartDateFilter={setStartDateFilter}
+					setEndFilter={setEndFilter}
+				/>
 				{matches.map((dateMatchesPair) => {
 					// only returns finished matches
 					return (
