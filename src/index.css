@@ -28,3 +28,10 @@ button:hover {
 	display: flex;
 	flex-direction: column;
 }
+
+.main,
+.league-fixtures,
+.league-results,
+.league-table {
+	overscroll-behavior-y: none;
+}

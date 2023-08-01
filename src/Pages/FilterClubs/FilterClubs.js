@@ -43,25 +43,31 @@ function FilterClubs({ clubFilter, setClubFilter, leagueTeams }) {
 				srcset=""
 				className={dropdownActive ? 'upchevron' : ''} // scales up the up chevron to match down chevron
 			/>
-			<div className="team-filter-dropdown" style={{ height: dropdownActive ? '450px' : '0px' }}>
-				<option
+			<div
+				className="team-filter-dropdown"
+				style={{
+					height: dropdownActive ? '450px' : '0px',
+					border: dropdownActive ? '0.5px solid rgba(128, 128, 128, 0.3)' : '',
+				}}
+			>
+				<div
 					onClick={() => {
 						setClubFilter('All Clubs');
 						closeDropdown();
 					}}
 				>
 					All Clubs
-				</option>
+				</div>
 				{leagueTeams.map((team) => {
 					return (
-						<option
+						<div
 							onClick={() => {
 								setClubFilter(team.shortName);
 								closeDropdown();
 							}}
 						>
 							{team.shortName}
-						</option>
+						</div>
 					);
 				})}
 			</div>
