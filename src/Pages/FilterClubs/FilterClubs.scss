@@ -1,0 +1,59 @@
+.team-filter-container {
+	display: flex;
+	position: relative;
+	margin: 20px;
+	border: 0.5px solid rgba(128, 128, 128, 0.3);
+	padding: 10px;
+	width: fit-content;
+	min-width: 160px;
+
+	div {
+		display: flex;
+		flex-direction: column;
+		h3 {
+			margin: 0px;
+			color: #37003c;
+			font-weight: 300;
+			font-size: 12px;
+		}
+
+		p {
+			margin: 0px;
+			color: #37003c;
+		}
+	}
+
+	img {
+		margin: auto;
+		margin-right: 0;
+		width: 20px;
+		height: 20px;
+	}
+	.upchevron {
+		transform: scale(1.4);
+	}
+
+	.team-filter-dropdown {
+		display: flex;
+		position: absolute;
+		top: 60px;
+		flex-direction: column;
+		background-color: white;
+		width: calc(100% - 10px);
+		max-height: 150px;
+		overflow: hidden;
+		overflow-y: auto;
+
+		option {
+			margin: 10px 0px;
+			font-weight: 300;
+
+			&:hover {
+				color: lighten(#37003c, 25%);
+			}
+		}
+	}
+	&:hover {
+		cursor: pointer;
+	}
+}

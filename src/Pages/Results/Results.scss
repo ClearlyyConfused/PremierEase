@@ -22,12 +22,6 @@
 		text-align: center;
 	}
 
-	.team-filter-container {
-		.team-filter-dropdown {
-			overflow: hidden;
-		}
-	}
-
 	.matches-on-date {
 		display: flex;
 		flex-direction: column;
@@ -37,7 +31,8 @@
 			align-self: flex-start;
 			margin: 0;
 			padding: 20px;
-			font-weight: bold;
+			color: #37003c;
+			font-weight: 800;
 			font-size: 20px;
 		}
 
