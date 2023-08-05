@@ -43,7 +43,7 @@ function Fixtures({ leagueFixtures, leagueTeams }) {
 											<td>
 												<img src={fixture.awayTeam.crest} alt={fixture.awayTeam.shortName} />
 											</td>
-
+											{console.log(fixture)}
 											{/* if match isn't live or finished, display date of match */}
 											{fixture.status === 'SCHEDULED' || fixture.status === 'TIMED' ? (
 												<td>
@@ -54,6 +54,12 @@ function Fixtures({ leagueFixtures, leagueTeams }) {
 														})}
 													</td>
 													<td className="match-scheduled">SCHEDULED</td>
+												</td>
+											) : fixture.status === 'POSTPONED' ? (
+												<td>
+													<td className="time">TBD</td>
+													{/* display match status */}
+													<td className="match-scheduled">POSTPONED</td>
 												</td>
 											) : (
 												// else display the current or final score
