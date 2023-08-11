@@ -57,8 +57,9 @@ function MainFixtures({ leagueFixtures }) {
 														// else display the current or final score
 														<td>
 															<td className="score">
-																<td>{match.score.fullTime.home}</td>
-																<td>{match.score.fullTime.away}</td>
+																<td>
+																	{match.score.fullTime.home} - {match.score.fullTime.away}
+																</td>
 															</td>
 															{/* display match status */}
 															{match.status === 'IN_PLAY' || match.status === 'PAUSED' ? (

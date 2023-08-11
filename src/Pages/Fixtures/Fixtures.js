@@ -43,7 +43,6 @@ function Fixtures({ leagueFixtures, leagueTeams }) {
 											<td>
 												<img src={fixture.awayTeam.crest} alt={fixture.awayTeam.shortName} />
 											</td>
-											{console.log(fixture)}
 											{/* if match isn't live or finished, display date of match */}
 											{fixture.status === 'SCHEDULED' || fixture.status === 'TIMED' ? (
 												<td>
@@ -65,8 +64,9 @@ function Fixtures({ leagueFixtures, leagueTeams }) {
 												// else display the current or final score
 												<td>
 													<td className="score">
-														<td>{fixture.score.fullTime.home}</td>
-														<td>{fixture.score.fullTime.away}</td>
+														<td>
+															{fixture.score.fullTime.away} - {fixture.score.fullTime.home}
+														</td>
 													</td>
 													{/* display match status */}
 													{fixture.status === 'IN_PLAY' || fixture.status === 'PAUSED' ? (
