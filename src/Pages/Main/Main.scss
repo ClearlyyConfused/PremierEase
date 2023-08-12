@@ -115,7 +115,7 @@ $left-columns-width: 420px;
 						.match-finished {
 							box-sizing: border-box;
 							border-radius: 5px;
-							padding: 4px 0px;
+							padding: 3px 0px;
 							width: 100%;
 							color: white;
 							font-weight: bold !important;
@@ -169,13 +169,15 @@ $left-columns-width: 420px;
 						.score {
 							td {
 								box-sizing: border-box;
+								border-radius: 5px;
 								background-color: #37003c;
 								padding: 0;
-								min-width: 30px;
+								width: 100%;
 								color: white;
-								font-weight: bold;
+								font-weight: 800;
 								font-size: 16px;
 								line-height: 30px;
+								letter-spacing: 2px;
 								text-align: center !important;
 							}
 						}

@@ -44,8 +44,8 @@ function Results({ leagueFixtures, leagueTeams }) {
 												<img src={fixture.awayTeam.crest} alt={fixture.awayTeam.shortName} />
 											</td>
 											<td>
-												<td>
-													{fixture.score.fullTime.away}-{fixture.score.fullTime.home}
+												<td className="score">
+													{fixture.score.fullTime.away} - {fixture.score.fullTime.home}
 												</td>
 												<td className="match-finished">FINISHED</td>
 											</td>

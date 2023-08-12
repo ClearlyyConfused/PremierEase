@@ -64,9 +64,7 @@ function Fixtures({ leagueFixtures, leagueTeams }) {
 												// else display the current or final score
 												<td>
 													<td className="score">
-														<td>
-															{fixture.score.fullTime.away} - {fixture.score.fullTime.home}
-														</td>
+														{fixture.score.fullTime.away} - {fixture.score.fullTime.home}
 													</td>
 													{/* display match status */}
 													{fixture.status === 'IN_PLAY' || fixture.status === 'PAUSED' ? (

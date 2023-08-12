@@ -1,8 +1,8 @@
-import SortFixtures from '../Fixtures/SortFixtures';
+import SortAllMatches from './SortAllMatches';
 
 function MainFixtures({ leagueFixtures }) {
 	const currentMatchday = leagueFixtures !== undefined ? leagueFixtures[0].season.currentMatchday : 0;
-	let matchDatePair = leagueFixtures !== undefined ? SortFixtures(leagueFixtures) : [];
+	let matchDatePair = leagueFixtures !== undefined ? SortAllMatches(leagueFixtures, currentMatchday) : [];
 
 	function timeUntilNextMatch() {
 		for (const fixture of leagueFixtures) {
@@ -37,9 +37,9 @@ function MainFixtures({ leagueFixtures }) {
 										{pair[1].map((match) => {
 											return (
 												<tr>
-													<td>{match.homeTeam.tla}</td>
+													<td>{match.awayTeam.tla}</td>
 													<td>
-														<img src={match.homeTeam.crest} alt={match.homeTeam.shortName} />
+														<img src={match.awayTeam.crest} alt={match.awayTeam.shortName} />
 													</td>
 
 													{/* if match isn't live or finished, display date of match */}
@@ -58,7 +58,7 @@ function MainFixtures({ leagueFixtures }) {
 														<td>
 															<td className="score">
 																<td>
-																	{match.score.fullTime.home} - {match.score.fullTime.away}
+																	{match.score.fullTime.away} - {match.score.fullTime.home}
 																</td>
 															</td>
 															{/* display match status */}
@@ -71,9 +71,9 @@ function MainFixtures({ leagueFixtures }) {
 													)}
 
 													<td>
-														<img src={match.awayTeam.crest} alt={match.awayTeam.shortName} />
+														<img src={match.homeTeam.crest} alt={match.homeTeam.shortName} />
 													</td>
-													<td>{match.awayTeam.tla}</td>
+													<td>{match.homeTeam.tla}</td>
 												</tr>
 											);
 										})}
