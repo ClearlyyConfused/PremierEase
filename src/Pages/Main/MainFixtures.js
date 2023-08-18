@@ -53,6 +53,12 @@ function MainFixtures({ leagueFixtures }) {
 															</td>
 															<td className="match-scheduled">SCHEDULED</td>
 														</td>
+													) : match.status === 'POSTPONED' ? (
+														<td>
+															<td className="time">TBD</td>
+															{/* display match status */}
+															<td className="match-scheduled">POSTPONED</td>
+														</td>
 													) : (
 														// else display the current or final score
 														<td>
