@@ -31,7 +31,6 @@ function Fixtures({ leagueFixtures, leagueTeams }) {
 					setEndFilter={setEndFilter}
 				/>
 				{matches.map((dateMatchesPair) => {
-					// only returns finished matches
 					return (
 						<tr className="matches-on-date">
 							<h2>{dateMatchesPair[0]}</h2>
