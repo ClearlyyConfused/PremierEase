@@ -282,6 +282,7 @@ $left-columns-width: 420px;
 			}
 		}
 
+		// main image display
 		.article-images {
 			position: relative;
 			background-color: #37003c;
@@ -326,8 +327,8 @@ $left-columns-width: 420px;
 			}
 
 			.title-container {
-				// title text overflow was not hidden when padding on h2
-				// container puts padding outside of h2
+				// title text overflow was not hidden with padding on h2
+				// title-container puts padding outside of h2
 				position: absolute;
 				bottom: 0px;
 				left: 0px;
@@ -337,12 +338,15 @@ $left-columns-width: 420px;
 				h2 {
 					-webkit-line-clamp: 4;
 					-webkit-box-orient: vertical;
+					word-wrap: break-word;
 					display: -webkit-box;
+
 					animation: fade-in 1s;
 					box-sizing: border-box;
 					margin: 0px;
 					width: 100%;
 					max-height: 190px;
+
 					overflow: hidden;
 					color: white;
 					font-weight: 800;

@@ -24,14 +24,14 @@ function TableRow({ team }) {
 			<td>{team.position}</td>
 			<td>
 				<img src={team.team.crest} alt={team.team.shortName} />
-			</td>
-			<td>
-				{screenWidth >= 735 // display full club name
-					? team.team.shortName
-					: screenWidth >= 412 // display part club name
-					? team.team.tla
-					: ''}
-				{/* do not display club name */}
+				<div>
+					{screenWidth >= 600 // display full club name
+						? team.team.shortName
+						: screenWidth >= 350 // display part club name
+						? team.team.tla
+						: ''}
+					{/* do not display club name */}
+				</div>
 			</td>
 			<td>{team.playedGames}</td>
 			<td>{team.won}</td>
@@ -39,31 +39,33 @@ function TableRow({ team }) {
 			<td>{team.lost}</td>
 			<td>{team.goalDifference > 0 ? '+' + team.goalDifference : team.goalDifference}</td>
 			<td>{team.points}</td>
-
-			{/* display either form or button to display form */}
-			{screenWidth > mobileWidth ? (
-				<TeamForm form={team.form} />
-			) : (
-				<td onClick={handleClick}>
-					<img
-						className={formDisplay === '100px' ? 'upchevron' : ''} // scales up the up chevron to match down chevron
-						src={formDisplay === '0px' ? downChevron : upChevron}
-						alt="dropdown"
-					/>
-				</td>
-			)}
-			{/* display form dropdown */}
-			{screenWidth > mobileWidth ? (
-				''
-			) : (
-				<div className="form-dropdown" style={{ height: formDisplay }}>
-					<div className="form-dropdown-container">
-						Form: <TeamForm form={team.form} />
-					</div>
-				</div>
-			)}
 		</tr>
 	);
 }
+
+/* code for form column, removed since API is broken
+// display either form or button to display form
+{screenWidth > mobileWidth ? (
+	<TeamForm form={team.form} />
+) : (
+	<td onClick={handleClick}>
+		<img
+			className={formDisplay === '100px' ? 'upchevron' : ''} // scales up the up chevron to match down chevron
+			src={formDisplay === '0px' ? downChevron : upChevron}
+			alt="dropdown"
+		/>
+	</td>
+)}
+// display form dropdown
+{screenWidth > mobileWidth ? (
+	''
+) : (
+	<div className="form-dropdown" style={{ height: formDisplay }}>
+		<div className="form-dropdown-container">
+			Form: <TeamForm form={team.form} />
+		</div>
+	</div>
+)}
+*/
 
 export default TableRow;

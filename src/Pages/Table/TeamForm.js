@@ -1,6 +1,6 @@
 function TeamForm({ form }) {
 	let formDisplay = [];
-	
+
 	// if form data is null, like at the start of the season, display filler
 	if (form === null) {
 		return (
@@ -13,7 +13,7 @@ function TeamForm({ form }) {
 					<p className="draw">-</p>
 				</div>
 			</td>
-		)
+		);
 	}
 
 	// remove commas from form data and push onto array
@@ -37,8 +37,8 @@ function TeamForm({ form }) {
 			return <p className="draw">D</p>;
 		} else if (w === 'L') {
 			return <p className="lost">L</p>;
-		} else if (w === "-") {
-			return <p className="draw">-</p>
+		} else if (w === '-') {
+			return <p className="draw">-</p>;
 		}
 	}
 

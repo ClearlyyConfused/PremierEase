@@ -21,16 +21,6 @@ $mobile-width-2: variables.$mobile-layout-width; // width at which columns heade
 $mobile-width-3: 490px; // width at which gap between columns shorten, img gets smaller
 
 .league-table {
-	display: flex;
-	flex: 1;
-	flex-direction: column;
-	align-items: center;
-	gap: 15px;
-	border-spacing: 0px;
-	padding-bottom: 30px;
-	overflow-x: hidden;
-	overflow-y: scroll;
-
 	h1 {
 		box-sizing: border-box;
 		margin: 0;
@@ -45,193 +35,53 @@ $mobile-width-3: 490px; // width at which gap between columns shorten, img gets 
 		text-align: center;
 	}
 
-	// table header
-	tr:first-of-type :hover {
-		cursor: default;
-	}
-	tr:first-of-type {
-		display: flex;
-		position: sticky;
-		top: 0px;
-		z-index: 1; // in front of table rows
-		background-color: white;
-		padding: 15px 0px;
-		font-size: 14px;
-
-		th {
-			padding: 0px $gap-between-columns;
-			color: #87668a;
-			font-weight: bold;
-
-			@media (max-width: $mobile-width-3) {
-				padding: 0px $gap-between-columns-2;
-			}
-			@media (max-width: 380px) {
-				padding: 0px 4px;
-			}
-		}
-		// position column
-		th:nth-child(1) {
-			min-width: $position-column-width;
-			@media (max-width: $mobile-width-2) {
-				min-width: $position-column-width-2;
-			}
-		}
-		// club logo column
-		th:nth-child(2) {
-			min-width: $club-logo-column-width;
-			text-align: center;
-			@media (max-width: $mobile-width-3) {
-				min-width: $mobile-club-logo-column-width;
-			}
-		}
-		// club column
-		th:nth-child(3) {
-			width: 100%;
-		}
-		// right side columns {
-		th:nth-child(4),
-		th:nth-child(5),
-		th:nth-child(6),
-		th:nth-child(7),
-		th:nth-child(8),
-		th:nth-child(9) {
-			min-width: $right-columns-width;
-			@media (max-width: $mobile-width-2) {
-				min-width: $right-columns-width-2;
-			}
-		}
-		// forms column
-		th:nth-child(10) {
-			min-width: $form-column-width;
-			@media (max-width: $mobile-width) {
-				min-width: $mobile-form-column-width;
-			}
-		}
-	}
-
-	// table rows
-	tr {
-		z-index: 0; // behind table header
+	table {
+		padding: 10px 0px;
 		width: 100%;
-		max-width: 1200px;
-		color: #37003c;
+		text-align: center;
 
-		td {
-			padding: 0px $gap-between-columns;
-			@media (max-width: $mobile-width-3) {
-				padding: 0px $gap-between-columns-2;
+		tr {
+			th {
+				color: #87668a;
 			}
-			@media (max-width: 380px) {
-				padding: 0px 4px;
+			// club header
+			th:nth-child(2) {
+				padding-left: 12.5px;
+				text-align: left;
 			}
 
-			img {
-				width: $club-logo-column-width;
-				height: $club-logo-column-width;
-				@media (max-width: $mobile-width-3) {
-					width: $mobile-club-logo-column-width;
-					height: $mobile-club-logo-column-width;
+			td {
+				color: #37003c;
+			}
+			// club
+			td:nth-child(2) {
+				display: flex;
+				align-items: center;
+				// club logo
+				img {
+					padding: 5px 0px;
+					width: 60px;
+					min-width: 60px;
+					height: 60px;
+				}
+				// club name
+				div {
+					padding-left: 15px;
+					width: 100%;
+					overflow-x: hidden;
+					font-weight: 700;
+					text-align: left;
+					text-overflow: ellipsis;
+					white-space: nowrap;
 				}
 			}
-		}
-
-		// position column
-		td:nth-child(1) {
-			min-width: $position-column-width;
-			text-align: center;
-			@media (max-width: $mobile-width-2) {
-				min-width: $position-column-width-2;
+			td:nth-child(8) {
+				font-weight: 700;
 			}
-		}
-		// club column
-		td:nth-child(3) {
-			width: 100%;
-			font-weight: 700;
-			text-align: left;
-		}
-		// right side columns {
-		td:nth-child(4),
-		td:nth-child(5),
-		td:nth-child(6),
-		td:nth-child(7),
-		td:nth-child(8),
-		td:nth-child(9) {
-			min-width: $right-columns-width;
-			text-align: center;
-			@media (max-width: $mobile-width-2) {
-				min-width: $right-columns-width-2;
+			// club form
+			td:nth-child(10) > div {
+				display: flex;
 			}
-		}
-		// points column
-		td:nth-child(9) {
-			font-weight: bold;
-		}
-		// form column
-		td:nth-child(10) {
-			min-width: $form-column-width;
-			text-align: center;
-
-			// chevron
-			img {
-				width: 15px;
-				height: 15px;
-			}
-			.upchevron {
-				transform: scale(1.4);
-			}
-
-			@media (max-width: $mobile-width) {
-				min-width: $mobile-form-column-width;
-			}
-		}
-		@media (max-width: $mobile-width) {
-			td:nth-child(10):hover {
-				cursor: pointer;
-			}
-		}
-	}
-
-	// container for form when in default layout
-	.form-container {
-		display: flex;
-		justify-content: center;
-		gap: 5px;
-		p {
-			margin: 0;
-			border-radius: 5px;
-			width: 32px;
-			height: 32px;
-			color: white;
-			font-weight: bold;
-			line-height: 32px;
-		}
-		.win {
-			background-color: #13cf00;
-		}
-		.draw {
-			background-color: #76767b;
-		}
-		.lost {
-			background-color: #d81920;
-		}
-	}
-
-	// form dropdown when in mobile layout
-	.form-dropdown {
-		transition: height 0.5s;
-		overflow: hidden;
-		.form-dropdown-container {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			gap: 10px;
-			margin-bottom: 15px;
-			border-bottom: 1px solid black;
-			padding: 10px;
-			padding-bottom: 15px;
-			font-weight: bold;
 		}
 	}
 }
