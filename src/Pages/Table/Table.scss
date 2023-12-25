@@ -42,6 +42,9 @@ $mobile-width-3: 490px; // width at which gap between columns shorten, img gets 
 
 		tr {
 			th {
+				position: sticky;
+				top: -0.5px;
+				background-color: white;
 				color: #87668a;
 			}
 			// club header
