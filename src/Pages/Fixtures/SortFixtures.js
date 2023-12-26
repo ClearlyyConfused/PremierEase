@@ -3,9 +3,10 @@ function SortFixtures(leagueFixtures, team = 'All Clubs', startDate, endDate) {
 
 	for (const fixture of leagueFixtures) {
 		// skips finished matches
-		if (fixture.status === 'FINISHED') {
+		if (fixture.status === 'FINISHED' || fixture.status === 'CANCELLED') {
 			continue;
 		}
+
 		// skips non-filtered clubs
 		if (team !== 'All Clubs') {
 			if (fixture.homeTeam.shortName !== team && fixture.awayTeam.shortName !== team) {
