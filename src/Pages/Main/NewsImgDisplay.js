@@ -13,7 +13,7 @@ function NewsImgDisplay({ img, displayImage, setDisplayImage, numOfImgs }) {
 				setDisplayImage(displayImage + 1);
 			}
 		}
-		const autoNextImg = setTimeout(forwardImg, 10000);
+		const autoNextImg = setTimeout(forwardImg, 10000999999);
 		return () => {
 			clearTimeout(autoNextImg);
 		};
