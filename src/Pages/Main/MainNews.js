@@ -4,6 +4,7 @@ import backupImage from '../../images/Premier_league_text_logo.png';
 
 function MainNews({ leagueNews, newsImages }) {
 	const [displayImage, setDisplayImage] = useState(0);
+	console.log(leagueNews);
 
 	return (
 		<section className="news">

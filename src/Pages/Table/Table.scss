@@ -21,6 +21,9 @@ $mobile-width-2: variables.$mobile-layout-width; // width at which columns heade
 $mobile-width-3: 490px; // width at which gap between columns shorten, img gets smaller
 
 .league-table {
+	height: 100%;
+	overflow-y: auto;
+
 	h1 {
 		box-sizing: border-box;
 		margin: 0;
@@ -45,6 +48,7 @@ $mobile-width-3: 490px; // width at which gap between columns shorten, img gets 
 				position: sticky;
 				top: -0.5px;
 				background-color: white;
+				padding-top: 8px;
 				color: #87668a;
 			}
 			// club header
