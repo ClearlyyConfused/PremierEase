@@ -24,7 +24,7 @@ https://premier-ease.vercel.app/
 
 ## Screenshots 📸
 
-![App Screenshot 1](./README_images/Screenshot%202023-07-27%20175805.png)
-![App Screenshot 2](./README_images/Screenshot%202023-07-27%20175847.png)
-![App Screenshot 3](./README_images/Screenshot%202023-07-27%20175933.png)
-![App Screenshot 4](./README_images/Screenshot%202023-07-27%20175948.png)
+![App Screenshot 1](./README_images/premier-ease.png)
+![App Screenshot 2](./README_images/premier-ease2.png)
+![App Screenshot 3](./README_images/premier-ease3.png)
+![App Screenshot 4](./README_images/premier-ease4.png)
