@@ -57,6 +57,22 @@ function APIFetch() {
 			.then((response) => response.json())
 			.then((data) => {
 				let arr = [];
+				for (const vid of data.newsImages[0].video_results) {
+					arr.push({
+						title: vid.title,
+						source: vid.channel.name,
+						original: vid.thumbnail.static,
+						link: vid.link,
+					});
+					if (arr.length === 14) {
+						return arr;
+					}
+				}
+				return arr;
+
+				/*
+				// news fetched from google
+				let arr = [];
 				for (const img of data.newsImages[0].images_results) {
 					if (img.original_width >= 700) {
 						arr.push(img);
@@ -67,6 +83,7 @@ function APIFetch() {
 					}
 				}
 				return arr;
+				*/
 			});
 	}
 
