@@ -54,11 +54,11 @@ nav {
 		.buttons {
 			display: flex;
 			transition: height 0.5s;
-			overflow: hidden;
 
 			@media (max-width: $mobile-size) {
 				flex-direction: column;
 				align-items: center;
+				overflow: hidden;
 
 				a {
 					width: 100%;
