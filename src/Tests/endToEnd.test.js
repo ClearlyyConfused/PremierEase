@@ -56,7 +56,7 @@ describe('Test filters on "Fixtures" page', () => {
 			.findElement(By.className('team-filter-dropdown'))
 			.findElements(By.xpath('.//div'));
 
-		const x = Math.floor(Math.random() * teams.length) + 1;
+		const x = Math.floor(Math.random() * teams.length - 1) + 1;
 		const filteredTeamName = await teams[x].getText();
 		await teams[x].click();
 
@@ -89,7 +89,7 @@ describe('Test filters on "Results" page', () => {
 			.findElement(By.className('team-filter-dropdown'))
 			.findElements(By.xpath('.//div'));
 
-		const x = Math.floor(Math.random() * teams.length) + 1;
+		const x = Math.floor(Math.random() * teams.length - 1) + 1;
 		const filteredTeamName = await teams[x].getText();
 		await teams[x].click();
 

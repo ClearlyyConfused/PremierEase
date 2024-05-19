@@ -22,8 +22,9 @@ function MainFixtures({ leagueFixtures }) {
 				<h1>Matchweek {currentMatchday}</h1>
 				<table className="matches-table">
 					<p className="next-match">
-						Next Match: {timeUntilNextMatch().days} days, {timeUntilNextMatch().hours} hours,{' '}
-						{timeUntilNextMatch().minutes} minutes
+						Next Match: {timeUntilNextMatch() ? timeUntilNextMatch().days : '?'} days,{' '}
+						{timeUntilNextMatch() ? timeUntilNextMatch().hours : '?'} hours,{' '}
+						{timeUntilNextMatch() ? timeUntilNextMatch().minutes : '?'} minutes
 					</p>
 					{matchDatePair.map((pair) => {
 						// if matches on a date are a part of the current matchday
